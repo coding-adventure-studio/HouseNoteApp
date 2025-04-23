@@ -1,0 +1,17 @@
+$(SRCROOT)/HouseNote/PropertyNotesViewModel.swift
+$(SRCROOT)/HouseNote/PropertyModels.swift
+$(SRCROOT)/HouseNote/HouseNoteApp.swift
+$(SRCROOT)/HouseNote/SharedModels/FormPickerModels.swift
+$(SRCROOT)/HouseNote/DevPreview/MockData.swift
+$(SRCROOT)/HouseNote/Views/NavigationViews/EditableNavTitleView.swift
+$(SRCROOT)/HouseNote/Views/NavigationViews/SaveButton.swift
+$(SRCROOT)/HouseNote/Views/NavigationViews/BackButton.swift
+$(SRCROOT)/HouseNote/Views/NavigationViews/LockButton.swift
+$(SRCROOT)/HouseNote/Views/PropertyNotesView.swift
+$(SRCROOT)/HouseNote/Views/PropertySectionsView.swift
+$(SRCROOT)/HouseNote/Views/Component/MultiFieldNumberPickerView.swift
+$(SRCROOT)/HouseNote/Views/Component/SectionCardView.swift
+$(SRCROOT)/HouseNote/Views/HeaderView/PhotoSectionView.swift
+$(SRCROOT)/HouseNote/Views/HeaderView/ScoreView.swift
+$(SRCROOT)/HouseNote/Views/HeaderView/HeaderControlsView.swift
+$(SRCROOT)/HouseNote/Views/PropertyNotesContentView.swift

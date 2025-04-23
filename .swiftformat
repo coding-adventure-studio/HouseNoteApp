@@ -1,0 +1,32 @@
+# ================================
+# ✅ Common formatting preferences
+# ================================
+
+--allman false                   # Use K&R braces style instead of Allman
+--commas inline                  # Place commas at the end of lines, not the beginning
+--stripunusedargs closure-only  # Remove unused arguments in closures only
+--trimwhitespace always          # Remove trailing whitespace on all lines
+--wraparguments before-first     # Wrap function arguments before the first argument
+--wrapcollections before-first   # Wrap collection elements before the first element
+--indent 4                       # Indent with 4 spaces
+--swiftversion 5.9               # Set Swift language version to 5.9
+--self remove                    # Remove redundant `self` when not required
+--closingparen balanced          # Balance closing parens on new lines when wrapping
+--importgrouping testable-bottom # Place `@testable import` statements at the bottom of import groups
+
+# ==================================
+# ✅ Enable additional cleanup rules
+# ==================================
+
+--enable redundantLet            # Remove unnecessary `let` bindings
+--enable redundantBackticks      # Remove unnecessary backticks around identifiers
+--enable redundantReturn         # Remove redundant `return` statements
+--enable strongOutlets           # Prefer strong outlets over weak (if safe)
+--enable sortImports             # Automatically sort import statements
+
+# =========================================
+# ❌ Disable specific rules you don’t need
+# =========================================
+
+--disable sortedSwitchCases      # Keep the original order of switch cases
+--disable wrapMultilineStatementBraces  # Don’t wrap multiline statement braces
