@@ -1,0 +1,168 @@
+import Combine
+import Foundation
+
+protocol PropertyServiceProtocol {
+    func saveProperty(_ property: Property) async throws
+    func loadProperty(id: UUID) async throws -> Property
+}
+
+protocol PropertyItemManageable {
+    func toggleStar(for id: UUID)
+    func toggleStatus(for id: UUID)
+    func updateValue(for id: UUID, value: ItemValue)
+}
+
+class PropertyService: PropertyServiceProtocol {
+    func saveProperty(_ property: Property) async throws {
+        // TODO: Implement save logic
+    }
+
+    func loadProperty(id: UUID) async throws -> Property {
+        throw NSError(domain: "", code: -1)
+    }
+}
+
+struct PropertyNoteViewData: Identifiable {
+    let id: UUID
+    let name: String
+    let advantageCount: Int
+    let disadvantageCount: Int
+    let totalCount: Int
+}
+
+class PropertyNotesViewModel: ObservableObject, PropertyItemManageable {
+    /// Input
+    @Published var showStarredOnly: Bool = false
+
+    /// Output
+    @Published var property: Property {
+        didSet {
+            viewData = PropertyNotesViewModel.makeViewData(from: property)
+        }
+    }
+
+    @Published private(set) var viewData: PropertyNoteViewData
+    @Published private(set) var filteredSections: [PropertySection] = []
+
+    private let service: PropertyServiceProtocol
+    private var cancellables = Set<AnyCancellable>()
+
+    // MARK: - Init
+
+    init(property: Property, service: PropertyServiceProtocol = PropertyService()) {
+        self.property = property
+        viewData = PropertyNotesViewModel.makeViewData(from: property)
+        self.service = service
+        setupBindings()
+    }
+
+    // MARK: - Bindings
+
+    private func setupBindings() {
+        $showStarredOnly
+            .combineLatest($property)
+            .map { shouldFilter, property in
+                guard shouldFilter else { return property.sections }
+
+                return property.sections.map { section in
+                    var filteredSection = section
+                    filteredSection.items = section.items.filter(\.isStarred)
+                    return filteredSection
+                }
+            }
+            .assign(to: \.filteredSections, on: self)
+            .store(in: &cancellables)
+    }
+
+    // MARK: - User Actions
+
+    func saveProperty() {
+        Task {
+            do {
+                try await service.saveProperty(property)
+            } catch {
+                print("Save failed: \(error)")
+            }
+        }
+    }
+
+    func dismissView() {
+        // TODO: Implement dismiss logic
+    }
+
+    func lockProperty() {
+        // TODO: Implement lock logic
+    }
+
+    func addPhoto() {
+        // TODO: Implement add photo logic
+    }
+
+    // MARK: - PropertyItemManageable Implementation
+
+    func toggleStar(for id: UUID) {
+        let newSections = property.sections.map { section in
+            let newItems = section.items.map { item in
+
+                guard item.id == id else { return item }
+                var updatedItem = item
+                updatedItem.isStarred.toggle()
+                return updatedItem
+            }
+            return PropertySection(id: section.id, type: section.type, items: newItems, order: section.order)
+        }
+
+        property = property.copyWithUpdatedSections(newSections)
+    }
+
+    func toggleStatus(for id: UUID) {
+        let newSections = property.sections.map { section in
+            let newItems = section.items.map { item in
+
+                guard item.id == id else { return item }
+
+                var updatedItem = item
+                updatedItem.status = item.status.next()
+                return updatedItem
+            }
+
+            return PropertySection(id: section.id, type: section.type, items: newItems, order: section.order)
+        }
+
+        property = property.copyWithUpdatedSections(newSections)
+    }
+
+    func updateValue(for id: UUID, value: ItemValue) {
+        let newSections = property.sections.map { section in
+            let newItems = section.items.map { item in
+                guard item.id == id else { return item }
+
+                var updatedItem = item
+                updatedItem.value = value
+                return updatedItem
+            }
+
+            return PropertySection(id: section.id, type: section.type, items: newItems, order: section.order)
+        }
+
+        property = property.copyWithUpdatedSections(newSections)
+    }
+
+    // MARK: - Helper Methods
+
+    static func makeViewData(from property: Property) -> PropertyNoteViewData {
+        let items = property.sections.flatMap(\.items)
+
+        let advantages = items.filter { $0.status == ItemStatus.advantage }.count
+        let disadvantages = items.filter { $0.status == ItemStatus.disadvantage }.count
+        let total = items.count
+
+        return PropertyNoteViewData(
+            id: property.id,
+            name: property.name,
+            advantageCount: advantages,
+            disadvantageCount: disadvantages,
+            totalCount: total
+        )
+    }
+}

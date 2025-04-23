@@ -1,0 +1,26 @@
+import SwiftUI
+
+struct PropertyNotesContentView: View {
+    @ObservedObject var viewModel: PropertyNotesViewModel
+    @Binding var editingTitle: Bool
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 16) {
+                HeaderControlsView(
+                    showStarredOnly: $viewModel.showStarredOnly,
+                    advantageCount: viewModel.viewData.advantageCount,
+                    disadvantageCount: viewModel.viewData.disadvantageCount,
+                    totalCount: viewModel.viewData.totalCount
+                )
+                PhotoSectionView(onAddPhoto: viewModel.addPhoto)
+                PropertySectionsView(viewModel: viewModel)
+            }
+            .padding()
+        }
+    }
+}
+
+#Preview {
+    PropertyNotesContentView(viewModel: PropertyNotesViewModel(property: mockProperty), editingTitle: .constant(true))
+}
