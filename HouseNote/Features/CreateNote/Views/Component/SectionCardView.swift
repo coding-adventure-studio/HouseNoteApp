@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SectionCardView: View {
-    let section: PropertySection
+    @Binding var section: PropertySection
     @ObservedObject var viewModel: PropertyNotesViewModel
     @State private var isExpanded: Bool = true
 
@@ -12,7 +12,7 @@ struct SectionCardView: View {
             } label: {
                 HStack {
                     Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
-                    Text(section.type.title)
+                    Text(section.type.displayName)
                         .font(.headline)
                     Text("（\(section.completedCount)/\(section.totalCount)）")
                         .foregroundColor(.gray)
@@ -23,14 +23,15 @@ struct SectionCardView: View {
             .buttonStyle(PlainButtonStyle())
 
             if isExpanded {
-                ForEach(section.items) { item in
+                ForEach(Array(zip(section.items.indices, $section.items)), id: \.0) { _, itemBinding in
+                    let itemId = itemBinding.wrappedValue.id
+                    let itemType = itemBinding.wrappedValue.type
+
                     PropertyItemRowView(
-                        item: item,
-                        toggleStar: { viewModel.toggleStar(for: item.id) },
-                        toggleStatus: { viewModel.toggleStatus(for: item.id) },
-                        updateValue: { value in
-                            viewModel.updateValue(for: item.id, value: value)
-                        }
+                        item: itemBinding,
+                        toggleStar: { viewModel.toggleStar(for: itemId) },
+                        toggleStatus: { viewModel.toggleStatus(for: itemId) },
+                        fieldTemplate: fieldTemplate(for: itemType)
                     )
                 }
             }
@@ -43,10 +44,10 @@ struct SectionCardView: View {
 }
 
 struct PropertyItemRowView: View {
-    let item: PropertyItem
+    @Binding var item: PropertyItem
     let toggleStar: () -> Void
     let toggleStatus: () -> Void
-    let updateValue: (ItemValue) -> Void
+    let fieldTemplate: FieldTemplate
 
     @State private var pickerState: PickerState?
 
@@ -56,14 +57,14 @@ struct PropertyItemRowView: View {
                 Image(systemName: item.isStarred ? "star.fill" : "star")
                     .foregroundColor(.yellow)
             }
-
+            
             itemValueEditor
 
             Spacer()
 
             Circle()
                 .fill(item.status.color)
-                .frame(width: 20, height: 20)
+                .frame(width: 10, height: 10)
                 .onTapGesture(perform: toggleStatus)
         }
         .sheet(item: $pickerState) { picker in
@@ -78,106 +79,71 @@ struct PropertyItemRowView: View {
 
     @ViewBuilder
     private var itemValueEditor: some View {
-        switch item.value {
-        case let .text(value):
-            TextField("請輸入", text: Binding(
-                get: { value },
-                set: { updateValue(.text($0)) }
-            ))
-
-        case let .number(value):
-            TextField("", value: Binding(
-                get: { value },
-                set: { updateValue(.number($0)) }
-            ), formatter: NumberFormatter())
-
-        case let .floor(current, total):
-            Button {
-                pickerState = PickerState.floor(current: current, total: total) {
-                    updateValue(.floor(current: $0.current, total: $0.total))
-                }
-            } label: {
-                HStack {
-                    Text("\(current)/\(total) 樓")
-                        .foregroundColor(.blue)
-                }
-                .padding(.vertical, 4)
+        switch fieldTemplate.inputKind {
+        case .textField:
+            if case let .text(value) = item.value {
+                TextField("請輸入\(fieldTemplate.label)", text: Binding(
+                    get: { value },
+                    set: { item.value = .text($0) }
+                ))
+                .font(.subheadline)
+            } else {
+                Text("⚠️ 預期是 text，但實際是 \(item.value)")
             }
 
-        case let .layout(rooms, living, bathrooms, balconies):
+        case let .multiPicker(title, fields):
             Button {
-                let info = LayoutResult(rooms: rooms, living: living, bathrooms: bathrooms, balconies: balconies)
-                pickerState = PickerState.layout(info: info) {
-                    updateValue(.layout(
-                        rooms: $0.rooms,
-                        livingRooms: $0.living,
-                        bathrooms: $0.bathrooms,
-                        balconies: $0.balconies
-                    ))
+                let numberFields = fields.map { fieldTemplate.numberField(for: $0) }
+                let initialValues: [String: Int] = if case let .multi(values) = item.value {
+                    values
+                } else {
+                    [:]
                 }
+
+                pickerState = PickerState.fromFields(
+                    numberFields,
+                    title: title,
+                    initialValues: initialValues
+                ) { result in
+                    item.value = .multi(result)
+                }
+
             } label: {
-                Text("\(rooms)房 \(living)廳 \(bathrooms)衛 \(balconies)陽台")
+                Text(fieldTemplate.displayText(item.value))
                     .foregroundColor(.blue)
             }
+
+        default:
+            Text("⚠️ 尚未實作的 inputKind")
         }
     }
 }
 
-// MARK: - PickerState Factory Extension
+// MARK: - Helper Extensions
 
-struct LayoutResult {
-    let rooms: Int
-    let living: Int
-    let bathrooms: Int
-    let balconies: Int
+extension Dictionary {
+    func mapKeys<T>(_ transform: (Key) -> T) -> [T: Value] where T: Hashable {
+        [T: Value](uniqueKeysWithValues: map { (transform($0.key), $0.value) })
+    }
 }
 
 extension PickerState {
-    struct FloorResult {
-        let current: Int
-        let total: Int
-    }
-
-    static func floor(current: Int, total: Int, onDone: @escaping (FloorResult) -> Void) -> PickerState {
-        let initial: [ItemFieldType: Int] = [
-            .floorCurrent: current,
-            .floorTotal: total
-        ]
-        return PickerState(
-            title: "樓層資訊",
-            fields: ItemFieldType.floorFields.map(\.numberField),
-            initialValues: Dictionary(uniqueKeysWithValues: initial.map { ($0.key.numberField, $0.value) }),
-            onConfirm: { result in
-                let current = result.first(where: { $0.key.label == ItemFieldType.floorCurrent.rawValue })?.value ?? 1
-                let total = result.first(where: { $0.key.label == ItemFieldType.floorTotal.rawValue })?.value ?? 1
-                onDone(FloorResult(current: current, total: total))
-            }
-        )
-    }
-
-    static func layout(info: LayoutResult, onDone: @escaping (LayoutResult) -> Void) -> PickerState {
-        let initial: [ItemFieldType: Int] = [
-            .layoutRooms: info.rooms,
-            .layoutLivingRooms: info.living,
-            .layoutBathrooms: info.bathrooms,
-            .layoutBalconies: info.balconies
-        ]
+    static func fromFields(
+        _ fields: [NumberField],
+        title: String,
+        initialValues: [String: Int],
+        onConfirm: @escaping ([String: Int]) -> Void
+    ) -> PickerState {
+        let values: [NumberField: Int] = Dictionary(uniqueKeysWithValues: fields.map {
+            ($0, initialValues[$0.label] ?? 0)
+        })
 
         return PickerState(
-            title: "選擇格局",
-            fields: ItemFieldType.layoutFields.map(\.numberField),
-            initialValues: Dictionary(uniqueKeysWithValues: initial.map { ($0.key.numberField, $0.value) }),
-            onConfirm: { result in
-                func getValue(for fieldType: ItemFieldType) -> Int {
-                    result.first(where: { $0.key.label == fieldType.rawValue })?.value ?? 0
-                }
-                let layoutResult = LayoutResult(
-                    rooms: getValue(for: .layoutRooms),
-                    living: getValue(for: .layoutLivingRooms),
-                    bathrooms: getValue(for: .layoutBathrooms),
-                    balconies: getValue(for: .layoutBalconies)
-                )
-                onDone(layoutResult)
+            title: title,
+            fields: fields,
+            initialValues: values,
+            onConfirm: { raw in
+                onConfirm(raw.mapKeys(\.label))
             }
         )
     }

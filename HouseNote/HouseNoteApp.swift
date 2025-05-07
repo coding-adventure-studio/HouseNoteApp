@@ -4,7 +4,9 @@ import SwiftUI
 struct HouseNoteApp: App {
     var body: some Scene {
         WindowGroup {
-            PropertyNotesView(viewModel: PropertyNotesViewModel(property: mockProperty))
+            PropertyNotesView(
+                viewModel: PropertyNotesViewModel(dependency: PropertyNotesDependencyMock())
+            )
         }
     }
 }

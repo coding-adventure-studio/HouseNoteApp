@@ -20,10 +20,10 @@
 		3A6205282D5350CB00B0507E /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205152D5350CB00B0507E /* ScoreView.swift */; };
 		3A6205292D5350CB00B0507E /* PropertyNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205172D5350CB00B0507E /* PropertyNotesView.swift */; };
 		3A62052B2D5350CB00B0507E /* HouseNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62051B2D5350CB00B0507E /* HouseNoteApp.swift */; };
-		3A62052C2D5350CB00B0507E /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62051C2D5350CB00B0507E /* MockData.swift */; };
 		3A62052D2D5350CB00B0507E /* PropertyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62051D2D5350CB00B0507E /* PropertyModels.swift */; };
 		3A62052E2D5350CB00B0507E /* PropertyNotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62051E2D5350CB00B0507E /* PropertyNotesViewModel.swift */; };
 		3A62056A2D55996C00B0507E /* PhotoSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205692D55996900B0507E /* PhotoSectionView.swift */; };
+		3AA4BA082DB8CCCB00679E3B /* PropertyNotesDependency+Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4BA072DB8CCC300679E3B /* PropertyNotesDependency+Live.swift */; };
 		3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC849862DB1643300F7DB55 /* MultiFieldNumberPickerView.swift */; };
 		3AC8498A2DB1E9A800F7DB55 /* FormPickerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC849892DB1E9A600F7DB55 /* FormPickerModels.swift */; };
 /* End PBXBuildFile section */
@@ -42,14 +42,22 @@
 		3A6205172D5350CB00B0507E /* PropertyNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyNotesView.swift; sourceTree = "<group>"; };
 		3A6205192D5350CB00B0507E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A62051B2D5350CB00B0507E /* HouseNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseNoteApp.swift; sourceTree = "<group>"; };
-		3A62051C2D5350CB00B0507E /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		3A62051D2D5350CB00B0507E /* PropertyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyModels.swift; sourceTree = "<group>"; };
 		3A62051E2D5350CB00B0507E /* PropertyNotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyNotesViewModel.swift; sourceTree = "<group>"; };
 		3A6205692D55996900B0507E /* PhotoSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSectionView.swift; sourceTree = "<group>"; };
 		3A9EEAF82D51FA2A008A06F2 /* HouseNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AA4BA072DB8CCC300679E3B /* PropertyNotesDependency+Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PropertyNotesDependency+Live.swift"; sourceTree = "<group>"; };
 		3AC849862DB1643300F7DB55 /* MultiFieldNumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiFieldNumberPickerView.swift; sourceTree = "<group>"; };
 		3AC849892DB1E9A600F7DB55 /* FormPickerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPickerModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3AB069882DC4B4EC0067B739 /* Extensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3A9EEAF52D51FA2A008A06F2 /* Frameworks */ = {
@@ -115,14 +123,6 @@
 			path = HouseNote;
 			sourceTree = "<group>";
 		};
-		3A62052F2D53514A00B0507E /* PreviewSupport */ = {
-			isa = PBXGroup;
-			children = (
-				3A62051C2D5350CB00B0507E /* MockData.swift */,
-			);
-			path = PreviewSupport;
-			sourceTree = "<group>";
-		};
 		3A62056B2D55AE9400B0507E /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +161,7 @@
 				3A6205182D5350CB00B0507E /* Views */,
 				3AA4B9FF2DB8C88100679E3B /* ViewModel */,
 				3AA4BA032DB8C8E200679E3B /* Model */,
+				3AA4BA062DB8CCB000679E3B /* Dependencies */,
 			);
 			path = CreateNote;
 			sourceTree = "<group>";
@@ -198,12 +199,20 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		3AA4BA062DB8CCB000679E3B /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				3AA4BA072DB8CCC300679E3B /* PropertyNotesDependency+Live.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
 		3AC849882DB1E99A00F7DB55 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3AB069882DC4B4EC0067B739 /* Extensions */,
 				3AA4BA042DB8C93300679E3B /* UI */,
 				3AA4BA052DB8C93800679E3B /* Models */,
-				3A62052F2D53514A00B0507E /* PreviewSupport */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -224,6 +233,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3AB069882DC4B4EC0067B739 /* Extensions */,
 			);
 			name = HouseNote;
 			packageProductDependencies = (
@@ -334,11 +346,11 @@
 				3A6205262D5350CB00B0507E /* HeaderControlsView.swift in Sources */,
 				3A6205272D5350CB00B0507E /* PropertySectionsView.swift in Sources */,
 				3A5D0DDB2DB094FC0036040E /* SectionCardView.swift in Sources */,
+				3AA4BA082DB8CCCB00679E3B /* PropertyNotesDependency+Live.swift in Sources */,
 				3A6205282D5350CB00B0507E /* ScoreView.swift in Sources */,
 				3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */,
 				3A6205292D5350CB00B0507E /* PropertyNotesView.swift in Sources */,
 				3A62052B2D5350CB00B0507E /* HouseNoteApp.swift in Sources */,
-				3A62052C2D5350CB00B0507E /* MockData.swift in Sources */,
 				3A62052D2D5350CB00B0507E /* PropertyModels.swift in Sources */,
 				3A62052E2D5350CB00B0507E /* PropertyNotesViewModel.swift in Sources */,
 				3A5D0DD92DAFCD410036040E /* PropertyNotesContentView.swift in Sources */,

@@ -1,7 +1,9 @@
 import SwiftUI
 
 #Preview {
-    PropertyNotesView(viewModel: PropertyNotesViewModel(property: mockProperty))
+    PropertyNotesView(
+        viewModel: PropertyNotesViewModel(dependency: PropertyNotesDependencyMock())
+    )
 }
 
 struct PropertyNotesView: View {

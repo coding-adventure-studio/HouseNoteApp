@@ -22,5 +22,8 @@ struct PropertyNotesContentView: View {
 }
 
 #Preview {
-    PropertyNotesContentView(viewModel: PropertyNotesViewModel(property: mockProperty), editingTitle: .constant(true))
+    PropertyNotesContentView(
+        viewModel: PropertyNotesViewModel(dependency: PropertyNotesDependencyMock()),
+        editingTitle: .constant(true)
+    )
 }

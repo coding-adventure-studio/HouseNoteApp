@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import SwiftUI
 
 protocol PropertyServiceProtocol {
     func saveProperty(_ property: Property) async throws
@@ -44,15 +45,24 @@ class PropertyNotesViewModel: ObservableObject, PropertyItemManageable {
     @Published private(set) var viewData: PropertyNoteViewData
     @Published private(set) var filteredSections: [PropertySection] = []
 
+    private let dependency: PropertyNotesDependency
     private let service: PropertyServiceProtocol
     private var cancellables = Set<AnyCancellable>()
 
+    var sectionBindings: Binding<[PropertySection]> {
+        Binding(
+            get: { self.property.sections },
+            set: { self.property.sections = $0 }
+        )
+    }
+
     // MARK: - Init
 
-    init(property: Property, service: PropertyServiceProtocol = PropertyService()) {
-        self.property = property
-        viewData = PropertyNotesViewModel.makeViewData(from: property)
+    init(service: PropertyServiceProtocol = PropertyService(), dependency: PropertyNotesDependency) {
         self.service = service
+        self.dependency = dependency
+        property = dependency.fetchInitialTemplate()
+        viewData = PropertyNotesViewModel.makeViewData(from: dependency.fetchInitialTemplate())
         setupBindings()
     }
 
