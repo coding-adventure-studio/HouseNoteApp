@@ -7,7 +7,6 @@ struct PhotoSectionView: View {
         VStack {
             Button(action: onAddPhoto) {
                 VStack(spacing: 12) {
-                    // 可愛的房子圖示
                     Image(systemName: "house.fill")
                         .font(.system(size: 40))
                         .foregroundColor(.gray)
@@ -22,6 +21,6 @@ struct PhotoSectionView: View {
                 .cornerRadius(12)
             }
         }
-        .padding()
+        .padding(.horizontal, 0)
     }
 }

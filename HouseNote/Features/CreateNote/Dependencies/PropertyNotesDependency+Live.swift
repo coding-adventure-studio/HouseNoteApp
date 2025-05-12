@@ -30,14 +30,15 @@ struct PropertyNotesDependencyMock: PropertyNotesDependency {
                     ],
                     order: 1
                 ),
-                PropertySection(id: UUID(),
-                                type: .community,
-                                items: [
-                                    .make(type: ItemType.managementFee, value: .text(""), order: 0),
-                                    .make(type: ItemType.sharedFacilities, value: .text(""), order: 1),
-                                ],
-                                order: 2
-                               )
+                PropertySection(
+                    id: UUID(),
+                    type: .community,
+                    items: [
+                        .make(type: ItemType.managementFee, value: .text(""), order: 0),
+                        .make(type: ItemType.sharedFacilities, value: .text(""), order: 1)
+                    ],
+                    order: 2
+                )
             ]
         )
     }

@@ -233,19 +233,19 @@ enum InputKind {
 
 func fieldTemplate(for type: ItemType) -> FieldTemplate {
     guard let template = allSectionTemplates
-        .flatMap({ $0.fields })
+        .flatMap(\.fields)
         .first(where: { $0.type == type }) else {
-#if DEBUG
-        fatalError("❌ Missing FieldTemplate for ItemType: \(type)")
-#else
-        print("⚠️ Missing FieldTemplate for ItemType: \(type)")
-        return FieldTemplate(
-            type: type,
-            label: type.label,
-            inputKind: .textField,
-            defaultValue: .text("")
-        )
-#endif
+        #if DEBUG
+            fatalError("❌ Missing FieldTemplate for ItemType: \(type)")
+        #else
+            print("⚠️ Missing FieldTemplate for ItemType: \(type)")
+            return FieldTemplate(
+                type: type,
+                label: type.label,
+                inputKind: .textField,
+                defaultValue: .text("")
+            )
+        #endif
     }
     return template
 }

@@ -3,43 +3,30 @@ import SwiftUI
 struct SectionCardView: View {
     @Binding var section: PropertySection
     @ObservedObject var viewModel: PropertyNotesViewModel
-    @State private var isExpanded: Bool = true
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Button {
-                isExpanded.toggle()
-            } label: {
-                HStack {
-                    Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
-                    Text(section.type.displayName)
-                        .font(.headline)
-                    Text("（\(section.completedCount)/\(section.totalCount)）")
-                        .foregroundColor(.gray)
-                        .font(.subheadline)
-                    Spacer()
-                }
-            }
-            .buttonStyle(PlainButtonStyle())
+        let indexedItems = Array(zip(section.items.indices, $section.items))
 
-            if isExpanded {
-                ForEach(Array(zip(section.items.indices, $section.items)), id: \.0) { _, itemBinding in
-                    let itemId = itemBinding.wrappedValue.id
-                    let itemType = itemBinding.wrappedValue.type
+        VStack(alignment: .leading, spacing: 16) {
+            ForEach(indexedItems, id: \.0) { index, itemBinding in
+                let itemId = itemBinding.wrappedValue.id
+                let itemType = itemBinding.wrappedValue.type
 
-                    PropertyItemRowView(
-                        item: itemBinding,
-                        toggleStar: { viewModel.toggleStar(for: itemId) },
-                        toggleStatus: { viewModel.toggleStatus(for: itemId) },
-                        fieldTemplate: fieldTemplate(for: itemType)
-                    )
+                PropertyItemRowView(
+                    item: itemBinding,
+                    toggleStar: { viewModel.toggleStar(for: itemId) },
+                    toggleStatus: { viewModel.toggleStatus(for: itemId) },
+                    fieldTemplate: fieldTemplate(for: itemType)
+                )
+                if index < section.items.count - 1 {
+                    Divider().padding(.leading, 30)
                 }
             }
         }
         .padding()
         .background(Color.white)
         .cornerRadius(12)
-        .shadow(color: .gray.opacity(0.1), radius: 4, x: 0, y: 2)
+        .shadow(color: .black.opacity(0.05), radius: 1, x: 0, y: 1)
     }
 }
 
@@ -57,8 +44,14 @@ struct PropertyItemRowView: View {
                 Image(systemName: item.isStarred ? "star.fill" : "star")
                     .foregroundColor(.yellow)
             }
-            
-            itemValueEditor
+
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                Text(fieldTemplate.label)
+                    .font(.headline)
+                    .foregroundColor(.black)
+
+                itemValueEditor
+            }
 
             Spacer()
 

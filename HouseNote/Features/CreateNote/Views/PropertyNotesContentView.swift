@@ -16,7 +16,8 @@ struct PropertyNotesContentView: View {
                 PhotoSectionView(onAddPhoto: viewModel.addPhoto)
                 PropertySectionsView(viewModel: viewModel)
             }
-            .padding()
+            .padding(.horizontal, 20)
+            .background(Color(.systemGroupedBackground))
         }
     }
 }
