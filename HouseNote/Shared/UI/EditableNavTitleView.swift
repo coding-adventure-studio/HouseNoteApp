@@ -10,7 +10,10 @@ struct EditableNavTitleView: View {
                 TextField("建案名稱", text: $title)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(maxWidth: 200)
-                    .onSubmit { isEditing = false }
+                    .onSubmit {
+                        isEditing = false
+                        hideKeyboard()
+                    }
             } else {
                 Text(title)
                     .onTapGesture { isEditing = true }

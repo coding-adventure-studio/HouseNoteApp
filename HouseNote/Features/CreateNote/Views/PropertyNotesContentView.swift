@@ -18,6 +18,9 @@ struct PropertyNotesContentView: View {
             }
             .padding(.horizontal, 20)
             .background(Color(.systemGroupedBackground))
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
     }
 }

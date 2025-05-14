@@ -80,6 +80,10 @@ struct PropertyItemRowView: View {
                     set: { item.value = .text($0) }
                 ))
                 .font(.subheadline)
+                .submitLabel(.done)
+                .onSubmit {
+                    hideKeyboard()
+                }
             } else {
                 Text("⚠️ 預期是 text，但實際是 \(item.value)")
             }
