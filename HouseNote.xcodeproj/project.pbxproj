@@ -24,6 +24,7 @@
 		3A62052E2D5350CB00B0507E /* PropertyNotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62051E2D5350CB00B0507E /* PropertyNotesViewModel.swift */; };
 		3A62056A2D55996C00B0507E /* PhotoSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205692D55996900B0507E /* PhotoSectionView.swift */; };
 		3AA4BA082DB8CCCB00679E3B /* PropertyNotesDependency+Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4BA072DB8CCC300679E3B /* PropertyNotesDependency+Live.swift */; };
+		3AB06A192DD2EBF70067B739 /* TagSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB06A182DD2EBF50067B739 /* TagSelectorView.swift */; };
 		3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC849862DB1643300F7DB55 /* MultiFieldNumberPickerView.swift */; };
 		3AC8498A2DB1E9A800F7DB55 /* FormPickerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC849892DB1E9A600F7DB55 /* FormPickerModels.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		3A6205692D55996900B0507E /* PhotoSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSectionView.swift; sourceTree = "<group>"; };
 		3A9EEAF82D51FA2A008A06F2 /* HouseNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA4BA072DB8CCC300679E3B /* PropertyNotesDependency+Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PropertyNotesDependency+Live.swift"; sourceTree = "<group>"; };
+		3AB06A182DD2EBF50067B739 /* TagSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorView.swift; sourceTree = "<group>"; };
 		3AC849862DB1643300F7DB55 /* MultiFieldNumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiFieldNumberPickerView.swift; sourceTree = "<group>"; };
 		3AC849892DB1E9A600F7DB55 /* FormPickerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPickerModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 		3A62056B2D55AE9400B0507E /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				3AB06A182DD2EBF50067B739 /* TagSelectorView.swift */,
 				3A5D0DDA2DB094F90036040E /* SectionCardView.swift */,
 			);
 			path = Component;
@@ -351,6 +354,7 @@
 				3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */,
 				3A6205292D5350CB00B0507E /* PropertyNotesView.swift in Sources */,
 				3A62052B2D5350CB00B0507E /* HouseNoteApp.swift in Sources */,
+				3AB06A192DD2EBF70067B739 /* TagSelectorView.swift in Sources */,
 				3A62052D2D5350CB00B0507E /* PropertyModels.swift in Sources */,
 				3A62052E2D5350CB00B0507E /* PropertyNotesViewModel.swift in Sources */,
 				3A5D0DD92DAFCD410036040E /* PropertyNotesContentView.swift in Sources */,

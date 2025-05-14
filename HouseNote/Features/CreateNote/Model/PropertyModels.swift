@@ -70,7 +70,7 @@ let allSectionTemplates: [SectionTemplate] = [
         type: .community,
         fields: [
             FieldTemplate(type: .managementFee, label: "管理費", inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .sharedFacilities, label: "公設", inputKind: .textField, defaultValue: .text(""))
+            FieldTemplate(type: .sharedFacilities, label: "公設", inputKind: .tagSelector(category: .publicFacility), defaultValue: .text(""))
         ]
     )
 ]
@@ -103,6 +103,7 @@ struct PropertySection: Identifiable {
             case let .text(value): !value.isEmpty
             case let .number(value): value != 0
             case let .multi(dict): dict.values.contains { $0 != 0 }
+            case let .tagSelector(tags): !tags.isEmpty
             }
         }.count
     }
@@ -188,6 +189,7 @@ enum ItemValue {
     case text(String)
     case number(Int)
     case multi([String: Int])
+    case tagSelector(Set<String>)
 }
 
 extension ItemValue {
@@ -199,6 +201,37 @@ extension ItemValue {
             "\(n)"
         case let .multi(values):
             values.map { "\($0.key): \($0.value)" }.joined(separator: " ")
+        case let .tagSelector(tags):
+            tags.joined(separator: ", ")
+        }
+    }
+}
+
+enum TagSelectorCategory {
+    case publicFacility
+    case badFengShui
+    case annoyingFacility
+    case leisureFacility
+
+    var displayName: String {
+        switch self {
+        case .publicFacility: "公設項目"
+        case .badFengShui: "風水條件"
+        case .annoyingFacility: "嫌惡設施"
+        case .leisureFacility: "休閒設施"
+        }
+    }
+
+    var options: [String] {
+        switch self {
+        case .publicFacility:
+            ["游泳池", "健身房", "閱覽室", "交誼廳", "兒童遊戲室"]
+        case .badFengShui:
+            ["穿堂煞", "壁刀煞", "路沖", "開門見灶"]
+        case .annoyingFacility:
+            ["墓地", "工廠", "高壓電塔", "夜市", "垃圾場"]
+        case .leisureFacility:
+            ["公園", "綠地", "河堤", "自行車道", "運動中心"]
         }
     }
 }
@@ -227,6 +260,7 @@ enum InputKind {
     case textField
     case numberField
     case multiPicker(title: String, fields: [String])
+    case tagSelector(category: TagSelectorCategory)
 }
 
 // MARK: - Utilities

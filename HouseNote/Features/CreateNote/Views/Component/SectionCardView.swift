@@ -106,6 +106,22 @@ struct PropertyItemRowView: View {
                     .foregroundColor(.blue)
             }
 
+        case let .tagSelector(category):
+            TagSelectorView(
+                options: category.options,
+                selectedTags: Binding(
+                    get: {
+                        if case let .tagSelector(tags) = item.value {
+                            return tags
+                        }
+                        return []
+                    },
+                    set: { newTags in
+                        item.value = .tagSelector(newTags)
+                    }
+                )
+            )
+
         default:
             Text("⚠️ 尚未實作的 inputKind")
         }
