@@ -115,13 +115,15 @@ struct PropertyItemRowView: View {
                 options: category.options,
                 selectedTags: Binding(
                     get: {
-                        if case let .tagSelector(tags) = item.value {
-                            return tags
+                        if case let .tagSelector(selection) = item.value {
+                            return selection.selectedTags
                         }
                         return []
                     },
                     set: { newTags in
-                        item.value = .tagSelector(newTags)
+                        if case let .tagSelector(selection) = item.value {
+                            item.value = .tagSelector(TagSelection(category: selection.category, selectedTags: newTags))
+                        }
                     }
                 )
             )

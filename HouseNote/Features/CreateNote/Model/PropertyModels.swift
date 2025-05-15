@@ -70,7 +70,7 @@ let allSectionTemplates: [SectionTemplate] = [
         type: .community,
         fields: [
             FieldTemplate(type: .managementFee, label: "管理費", inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .sharedFacilities, label: "公設", inputKind: .tagSelector(category: .publicFacility), defaultValue: .text(""))
+            FieldTemplate(type: .sharedFacilities, label: "公設", inputKind: .tagSelector(category: .publicFacility), defaultValue: .tagSelector(TagSelection.empty(category: .publicFacility)))
         ]
     )
 ]
@@ -185,11 +185,24 @@ extension ItemType {
     }
 }
 
+struct TagSelection {
+    let category: TagSelectorCategory
+    let selectedTags: Set<String>
+    
+    var isEmpty: Bool {
+        selectedTags.isEmpty
+    }
+    
+    static func empty(category: TagSelectorCategory) -> TagSelection {
+        TagSelection(category: category, selectedTags: [])
+    }
+}
+
 enum ItemValue {
     case text(String)
     case number(Int)
     case multi([String: Int])
-    case tagSelector(Set<String>)
+    case tagSelector(TagSelection)
 }
 
 extension ItemValue {
@@ -201,8 +214,8 @@ extension ItemValue {
             "\(n)"
         case let .multi(values):
             values.map { "\($0.key): \($0.value)" }.joined(separator: " ")
-        case let .tagSelector(tags):
-            tags.joined(separator: ", ")
+        case let .tagSelector(selection):
+            selection.selectedTags.isEmpty ? "尚未選擇" : selection.selectedTags.joined(separator: ", ")
         }
     }
 }
