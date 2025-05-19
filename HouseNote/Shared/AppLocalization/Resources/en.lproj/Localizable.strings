@@ -7,6 +7,9 @@
 "section_basic_info" = "Basic Info";
 "section_parking" = "Parking";
 "section_community" = "Community";
+"section_resident_info" = "Resident Info";
+"section_interior_condition" = "Interior Condition";
+"section_environment" = "Environment & Amenities";
 
 // MARK: - Basic Info Fields
 "field_address" = "Address";
@@ -56,3 +59,21 @@
 "form_layout_balconies" = "Balcony";
 "form_elevator_households" = "Households";
 "form_elevator_lifts" = "Lifts";
+"form_age" = "Building Age";
+"form_total_households" = "Total Households";
+"form_elevator_household_ratio" = "Elevator/Household Ratio";
+"form_households_per_floor" = "Households per Floor";
+"form_orientation" = "Orientation";
+"form_parking_location" = "Parking Location";
+"form_parking_type_detail" = "Parking Type Detail";
+"form_tenant_count" = "Tenant Count";
+"form_vacant_count" = "Vacant Count";
+"form_negative_facilities" = "Negative Facilities";
+
+"tag_gas_station" = "Gas Station";
+"tag_columbarium" = "Columbarium";
+"tag_high_voltage" = "High Voltage Tower";
+"tag_temple" = "Temple";
+"tag_dump" = "Dump";
+"tag_graveyard" = "Graveyard";
+"tag_funeral_home" = "Funeral Home";

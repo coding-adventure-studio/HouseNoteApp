@@ -88,6 +88,14 @@ struct PropertyItemRowView: View {
                 Text("⚠️ 預期是 text，但實際是 \(item.value)")
             }
 
+        case .numberField:
+            TextField("請輸入\(fieldTemplate.label)", value: PropertyItem.numberBinding(for: $item), formatter: NumberFormatter()).keyboardType(.numberPad)
+                .font(.subheadline)
+                .submitLabel(.done)
+                .onSubmit {
+                    hideKeyboard()
+                }
+
         case let .multiPicker(title, fields):
             Button {
                 let numberFields = fields.map { fieldTemplate.numberField(for: $0) }

@@ -24,6 +24,16 @@ enum ItemFieldType: String, CaseIterable, Identifiable {
     case layoutBalconies
     case elevatorHouseholds
     case elevatorLifts
+    case age = "form_age"
+    case totalHouseholds = "form_total_households"
+    case elevatorHouseholdRatio = "form_elevator_household_ratio"
+    case householdsPerFloor = "form_households_per_floor"
+    case orientation = "form_orientation"
+    case parkingLocation = "form_parking_location"
+    case parkingTypeDetail = "form_parking_type_detail"
+    case tenantCount = "form_tenant_count"
+    case vacantCount = "form_vacant_count"
+    case negativeFacilities = "form_negative_facilities"
 
     var id: String { rawValue }
 
@@ -37,6 +47,16 @@ enum ItemFieldType: String, CaseIterable, Identifiable {
         case .layoutBalconies: Localized.Form.layoutBalconies
         case .elevatorHouseholds: Localized.Form.elevatorHouseholds
         case .elevatorLifts: Localized.Form.elevatorLifts
+        case .age: Localized.Form.age
+        case .totalHouseholds: Localized.Form.totalHouseholds
+        case .elevatorHouseholdRatio: Localized.Form.elevatorHouseholdRatio
+        case .householdsPerFloor: Localized.Form.householdsPerFloor
+        case .orientation: Localized.Form.orientation
+        case .parkingLocation: Localized.Form.parkingLocation
+        case .parkingTypeDetail: Localized.Form.parkingTypeDetail
+        case .tenantCount: Localized.Form.tenantCount
+        case .vacantCount: Localized.Form.vacantCount
+        case .negativeFacilities: Localized.Form.negativeFacilities
         }
     }
 
@@ -50,6 +70,8 @@ enum ItemFieldType: String, CaseIterable, Identifiable {
             1 ... 10
         case .elevatorLifts:
             1 ... 6
+        case .age, .totalHouseholds, .elevatorHouseholdRatio, .householdsPerFloor, .orientation, .parkingLocation, .parkingTypeDetail, .tenantCount, .vacantCount, .negativeFacilities:
+            0 ... 100
         }
     }
 
@@ -62,6 +84,16 @@ enum ItemFieldType: String, CaseIterable, Identifiable {
         case .layoutBalconies: Localized.Form.layoutBalconies
         case .elevatorHouseholds: Localized.Form.elevatorHouseholds
         case .elevatorLifts: Localized.Form.elevatorLifts
+        case .age: Localized.Form.age
+        case .totalHouseholds: Localized.Form.totalHouseholds
+        case .elevatorHouseholdRatio: Localized.Form.elevatorHouseholdRatio
+        case .householdsPerFloor: Localized.Form.householdsPerFloor
+        case .orientation: Localized.Form.orientation
+        case .parkingLocation: Localized.Form.parkingLocation
+        case .parkingTypeDetail: Localized.Form.parkingTypeDetail
+        case .tenantCount: Localized.Form.tenantCount
+        case .vacantCount: Localized.Form.vacantCount
+        case .negativeFacilities: Localized.Form.negativeFacilities
         }
     }
 

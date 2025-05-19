@@ -7,6 +7,9 @@
 "section_basic_info" = "基本資訊";
 "section_parking" = "車位資訊";
 "section_community" = "社區資訊";
+"section_resident_info" = "住戶概況";
+"section_interior_condition" = "室內條件";
+"section_environment" = "周遭環境/生活機能";
 
 // MARK: - Basic Info Fields
 "field_address" = "地址";
@@ -56,3 +59,21 @@
 "form_layout_balconies" = "陽台";
 "form_elevator_households" = "戶";
 "form_elevator_lifts" = "梯";
+"form_age" = "屋齡";
+"form_total_households" = "社區總戶數";
+"form_elevator_household_ratio" = "戶梯比";
+"form_households_per_floor" = "單層戶數";
+"form_orientation" = "朝向";
+"form_parking_location" = "車位位置";
+"form_parking_type_detail" = "車位型態明細";
+"form_tenant_count" = "租戶數";
+"form_vacant_count" = "空屋數";
+"form_negative_facilities" = "嫌惡設施";
+
+"tag_gas_station" = "加油站";
+"tag_columbarium" = "靈骨塔";
+"tag_high_voltage" = "高壓電塔";
+"tag_temple" = "廟宇";
+"tag_dump" = "垃圾場";
+"tag_graveyard" = "墓地";
+"tag_funeral_home" = "殯儀館";

@@ -5,15 +5,23 @@ import SwiftUICore
 // MARK: - Section & Field Template Definitions
 
 enum NoteSectionType: String, CaseIterable, Identifiable {
-    case basicInfo, parking, community
+    case basicInfo
+    case residentInfo
+    case interiorCondition
+    case parking
+    case community
+    case environment
 
     var id: String { rawValue }
 
     var displayName: String {
         switch self {
         case .basicInfo: Localized.Section.basicInfo
+        case .residentInfo: Localized.Section.residentInfo
+        case .interiorCondition: Localized.Section.interiorCondition
         case .parking: Localized.Section.parking
         case .community: Localized.Section.community
+        case .environment: Localized.Section.environment
         }
     }
 }
@@ -45,36 +53,6 @@ struct SectionTemplate {
     let type: NoteSectionType
     let fields: [FieldTemplate]
 }
-
-let allSectionTemplates: [SectionTemplate] = [
-    SectionTemplate(
-        type: .basicInfo,
-        fields: [
-            FieldTemplate(type: .address, label: Localized.Field.Basic.address, inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .floor, label: Localized.Field.Basic.floor, inputKind: .multiPicker(title: Localized.Field.Basic.floor, fields: ItemType.floorFieldLabels), defaultValue: .multi(["所在樓層": 0, "總樓層": 0])),
-            FieldTemplate(type: .age, label: Localized.Field.Basic.age, inputKind: .numberField, defaultValue: .number(0)),
-            FieldTemplate(type: .layout, label: Localized.Field.Basic.layout, inputKind: .multiPicker(title: Localized.Field.Basic.layout, fields: ItemType.layoutFieldLabels), defaultValue: .multi(["房": 0, "廳": 0, "衛": 0, "陽台": 0])),
-            FieldTemplate(type: .brand, label: Localized.Field.Basic.brand, inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .price, label: Localized.Field.Basic.price, inputKind: .numberField, defaultValue: .number(0)),
-            FieldTemplate(type: .marketPrice, label: Localized.Field.Basic.marketPrice, inputKind: .numberField, defaultValue: .number(0))
-        ]
-    ),
-    SectionTemplate(
-        type: .parking,
-        fields: [
-            FieldTemplate(type: .parkingLocation, label: Localized.Field.Parking.location, inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .parkingType, label: Localized.Field.Parking.type, inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .chargingAvailable, label: Localized.Field.Parking.charging, inputKind: .numberField, defaultValue: .number(0))
-        ]
-    ),
-    SectionTemplate(
-        type: .community,
-        fields: [
-            FieldTemplate(type: .managementFee, label: Localized.Field.Community.managementFee, inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .sharedFacilities, label: Localized.Field.Community.sharedFacilities, inputKind: .tagSelector(category: .publicFacility), defaultValue: .tagSelector(TagSelection.empty(category: .publicFacility)))
-        ]
-    )
-]
 
 // MARK: - Property Core Models
 
@@ -127,14 +105,35 @@ extension PropertyItem {
     static func make(type: ItemType, value: ItemValue, isStarred: Bool = false, status: ItemStatus = .normal, order: Int = 0) -> PropertyItem {
         PropertyItem(id: UUID(), type: type, value: value, isStarred: isStarred, status: status, order: order)
     }
+
+    static func numberBinding(for item: Binding<PropertyItem>) -> Binding<Int> {
+        Binding<Int>(
+            get: {
+                if case let .number(n) = item.wrappedValue.value { return n }
+                return 0
+            },
+            set: { newValue in
+                item.wrappedValue.value = .number(newValue)
+            }
+        )
+    }
+
+    var numberValue: Int {
+        if case let .number(n) = value { return n }
+        return 0
+    }
 }
 
 // MARK: - Enum Definitions
 
 enum ItemType {
     case address, floor, age, layout, brand, price, marketPrice
-    case parkingLocation, parkingType, chargingAvailable
-    case managementFee, sharedFacilities
+    case totalHouseholds, elevatorHouseholdRatio, householdsPerFloor
+    case orientation
+    case parkingLocation, parkingType, parkingTypeDetail, chargingAvailable
+    case managementFee, sharedFacilities, tenantCount, vacantCount
+    case negativeFacilities
+
     var label: String {
         switch self {
         case .address: Localized.Field.Basic.address
@@ -144,11 +143,19 @@ enum ItemType {
         case .brand: Localized.Field.Basic.brand
         case .price: Localized.Field.Basic.price
         case .marketPrice: Localized.Field.Basic.marketPrice
-        case .parkingLocation: Localized.Field.Parking.location
-        case .parkingType: Localized.Field.Parking.type
-        case .chargingAvailable: Localized.Field.Parking.charging
+        case .totalHouseholds: Localized.Form.totalHouseholds
+        case .elevatorHouseholdRatio: Localized.Form.elevatorHouseholdRatio
+        case .householdsPerFloor: Localized.Form.householdsPerFloor
+        case .tenantCount: Localized.Form.tenantCount
+        case .vacantCount: Localized.Form.vacantCount
         case .managementFee: Localized.Field.Community.managementFee
         case .sharedFacilities: Localized.Field.Community.sharedFacilities
+        case .parkingLocation: Localized.Field.Parking.location
+        case .parkingType: Localized.Field.Parking.type
+        case .parkingTypeDetail: Localized.Form.parkingTypeDetail
+        case .chargingAvailable: Localized.Field.Parking.charging
+        case .negativeFacilities: Localized.Form.negativeFacilities
+        case .orientation: Localized.Form.orientation
         }
     }
 
