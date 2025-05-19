@@ -3,3 +3,16 @@
 *.xcodeproj/project.xcworkspace/xcuserdata/
 *.xcworkspace/xcuserdata/
 *.xcuserstate
+.DS_Store
+xcuserdata/
+.build/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+.swiftpm/
+ModuleCache/
+*.swiftmodule
+DerivedData/

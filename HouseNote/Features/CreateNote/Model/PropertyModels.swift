@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 import SwiftUICore
 
 // MARK: - Section & Field Template Definitions
@@ -10,9 +11,9 @@ enum NoteSectionType: String, CaseIterable, Identifiable {
 
     var displayName: String {
         switch self {
-        case .basicInfo: "基本資訊"
-        case .parking: "車位資訊"
-        case .community: "社區資訊"
+        case .basicInfo: Localized.Section.basicInfo
+        case .parking: Localized.Section.parking
+        case .community: Localized.Section.community
         }
     }
 }
@@ -49,28 +50,28 @@ let allSectionTemplates: [SectionTemplate] = [
     SectionTemplate(
         type: .basicInfo,
         fields: [
-            FieldTemplate(type: .address, label: "地址", inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .floor, label: "樓層", inputKind: .multiPicker(title: "樓層資訊", fields: ItemType.floorFieldLabels), defaultValue: .multi(["所在樓層": 0, "總樓層": 0])),
-            FieldTemplate(type: .age, label: "屋齡", inputKind: .numberField, defaultValue: .number(0)),
-            FieldTemplate(type: .layout, label: "格局", inputKind: .multiPicker(title: "格局", fields: ItemType.layoutFieldLabels), defaultValue: .multi(["房": 0, "廳": 0, "衛": 0, "陽台": 0])),
-            FieldTemplate(type: .brand, label: "建商品牌", inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .price, label: "開價", inputKind: .numberField, defaultValue: .number(0)),
-            FieldTemplate(type: .marketPrice, label: "實價登錄", inputKind: .numberField, defaultValue: .number(0))
+            FieldTemplate(type: .address, label: Localized.Field.Basic.address, inputKind: .textField, defaultValue: .text("")),
+            FieldTemplate(type: .floor, label: Localized.Field.Basic.floor, inputKind: .multiPicker(title: Localized.Field.Basic.floor, fields: ItemType.floorFieldLabels), defaultValue: .multi(["所在樓層": 0, "總樓層": 0])),
+            FieldTemplate(type: .age, label: Localized.Field.Basic.age, inputKind: .numberField, defaultValue: .number(0)),
+            FieldTemplate(type: .layout, label: Localized.Field.Basic.layout, inputKind: .multiPicker(title: Localized.Field.Basic.layout, fields: ItemType.layoutFieldLabels), defaultValue: .multi(["房": 0, "廳": 0, "衛": 0, "陽台": 0])),
+            FieldTemplate(type: .brand, label: Localized.Field.Basic.brand, inputKind: .textField, defaultValue: .text("")),
+            FieldTemplate(type: .price, label: Localized.Field.Basic.price, inputKind: .numberField, defaultValue: .number(0)),
+            FieldTemplate(type: .marketPrice, label: Localized.Field.Basic.marketPrice, inputKind: .numberField, defaultValue: .number(0))
         ]
     ),
     SectionTemplate(
         type: .parking,
         fields: [
-            FieldTemplate(type: .parkingLocation, label: "車位位置", inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .parkingType, label: "車位型態", inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .chargingAvailable, label: "充電設施", inputKind: .numberField, defaultValue: .number(0))
+            FieldTemplate(type: .parkingLocation, label: Localized.Field.Parking.location, inputKind: .textField, defaultValue: .text("")),
+            FieldTemplate(type: .parkingType, label: Localized.Field.Parking.type, inputKind: .textField, defaultValue: .text("")),
+            FieldTemplate(type: .chargingAvailable, label: Localized.Field.Parking.charging, inputKind: .numberField, defaultValue: .number(0))
         ]
     ),
     SectionTemplate(
         type: .community,
         fields: [
-            FieldTemplate(type: .managementFee, label: "管理費", inputKind: .textField, defaultValue: .text("")),
-            FieldTemplate(type: .sharedFacilities, label: "公設", inputKind: .tagSelector(category: .publicFacility), defaultValue: .tagSelector(TagSelection.empty(category: .publicFacility)))
+            FieldTemplate(type: .managementFee, label: Localized.Field.Community.managementFee, inputKind: .textField, defaultValue: .text("")),
+            FieldTemplate(type: .sharedFacilities, label: Localized.Field.Community.sharedFacilities, inputKind: .tagSelector(category: .publicFacility), defaultValue: .tagSelector(TagSelection.empty(category: .publicFacility)))
         ]
     )
 ]
@@ -136,18 +137,18 @@ enum ItemType {
     case managementFee, sharedFacilities
     var label: String {
         switch self {
-        case .address: "地址"
-        case .floor: "樓層"
-        case .age: "屋齡"
-        case .layout: "格局"
-        case .brand: "建商品牌"
-        case .price: "開價"
-        case .marketPrice: "實價登錄"
-        case .parkingLocation: "車位位置"
-        case .parkingType: "車位型態"
-        case .chargingAvailable: "充電設施"
-        case .managementFee: "管理費"
-        case .sharedFacilities: "公設"
+        case .address: Localized.Field.Basic.address
+        case .floor: Localized.Field.Basic.floor
+        case .age: Localized.Field.Basic.age
+        case .layout: Localized.Field.Basic.layout
+        case .brand: Localized.Field.Basic.brand
+        case .price: Localized.Field.Basic.price
+        case .marketPrice: Localized.Field.Basic.marketPrice
+        case .parkingLocation: Localized.Field.Parking.location
+        case .parkingType: Localized.Field.Parking.type
+        case .chargingAvailable: Localized.Field.Parking.charging
+        case .managementFee: Localized.Field.Community.managementFee
+        case .sharedFacilities: Localized.Field.Community.sharedFacilities
         }
     }
 
@@ -158,7 +159,7 @@ enum ItemType {
                 guard case let .multi(dict) = value else { return "❓" }
                 let current = dict["所在樓層"] ?? 0
                 let total = dict["總樓層"] ?? 0
-                return "\(current)F / \(total)F"
+                return Localized.Field.Floor.info(current: current, total: total)
             }
         case .layout:
             { value in
@@ -167,7 +168,7 @@ enum ItemType {
                 let living = dict["廳"] ?? 0
                 let bath = dict["衛"] ?? 0
                 let balcony = dict["陽台"] ?? 0
-                return "\(room)房 \(living)廳 \(bath)衛 \(balcony)陽台"
+                return Localized.Field.Layout.info(room: room, living: living, bath: bath, balcony: balcony)
             }
         default:
             { value in value.displayText }
@@ -177,7 +178,12 @@ enum ItemType {
 
 extension ItemType {
     static var layoutFieldLabels: [String] {
-        ["房", "廳", "衛", "陽台"]
+        [
+            Localized.Field.Layout.room,
+            Localized.Field.Layout.livingRoom,
+            Localized.Field.Layout.bathroom,
+            Localized.Field.Layout.balcony
+        ]
     }
 
     static var floorFieldLabels: [String] {
@@ -188,11 +194,11 @@ extension ItemType {
 struct TagSelection {
     let category: TagSelectorCategory
     let selectedTags: Set<String>
-    
+
     var isEmpty: Bool {
         selectedTags.isEmpty
     }
-    
+
     static func empty(category: TagSelectorCategory) -> TagSelection {
         TagSelection(category: category, selectedTags: [])
     }
@@ -209,13 +215,13 @@ extension ItemValue {
     var displayText: String {
         switch self {
         case let .text(value):
-            value.isEmpty ? "尚未填寫" : value
+            value.isEmpty ? Localized.Message.emptyInput : value
         case let .number(n):
             "\(n)"
         case let .multi(values):
             values.map { "\($0.key): \($0.value)" }.joined(separator: " ")
         case let .tagSelector(selection):
-            selection.selectedTags.isEmpty ? "尚未選擇" : selection.selectedTags.joined(separator: ", ")
+            selection.selectedTags.isEmpty ? Localized.Message.emptySelection : selection.selectedTags.joined(separator: ", ")
         }
     }
 }
@@ -228,7 +234,7 @@ enum TagSelectorCategory {
 
     var displayName: String {
         switch self {
-        case .publicFacility: "公設項目"
+        case .publicFacility: Localized.Field.Community.sharedFacilities
         case .badFengShui: "風水條件"
         case .annoyingFacility: "嫌惡設施"
         case .leisureFacility: "休閒設施"

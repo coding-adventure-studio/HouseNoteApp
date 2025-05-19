@@ -24,11 +24,11 @@ struct MultiFieldNumberPickerView: View {
         VStack(spacing: 16) {
             // Header
             HStack {
-                Button("取消") { dismiss() }
+                Button(Localized.Common.cancel) { dismiss() }
                 Spacer()
                 Text(title).bold()
                 Spacer()
-                Button("確定") {
+                Button(Localized.Common.confirm) {
                     onConfirm(selected)
                     dismiss()
                 }

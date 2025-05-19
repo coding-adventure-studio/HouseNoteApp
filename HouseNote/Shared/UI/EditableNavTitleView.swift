@@ -7,7 +7,7 @@ struct EditableNavTitleView: View {
     var body: some View {
         Group {
             if isEditing {
-                TextField("建案名稱", text: $title)
+                TextField(Localized.UI.propertyName, text: $title)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(maxWidth: 200)
                     .onSubmit {

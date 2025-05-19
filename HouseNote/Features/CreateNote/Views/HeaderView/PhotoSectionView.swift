@@ -11,7 +11,7 @@ struct PhotoSectionView: View {
                         .font(.system(size: 40))
                         .foregroundColor(.gray)
 
-                    Text("新增相片")
+                    Text(Localized.UI.addPhoto)
                         .font(.subheadline)
                         .foregroundColor(.gray)
                 }

@@ -19,24 +19,24 @@ struct PropertyNotesDependencyMock: PropertyNotesDependency {
             makeParkingSection(),
             makeCommunitySection()
         ]
-        return Property(id: UUID(), name: "新筆記", sections: sections)
+        return Property(id: UUID(), name: Localized.UI.newNote, sections: sections)
     }
-    
+
     private func makeBasicInfoSection() -> PropertySection {
-        return PropertySection(
+        PropertySection(
             id: UUID(),
             type: .basicInfo,
             items: [
                 .make(type: ItemType.address, value: .text(""), order: 0),
-                .make(type: .floor, value: .multi(["所在樓層": 0, "總樓層": 0]), order: 1),
-                .make(type: .layout, value: .multi(["房": 0, "廳": 0, "衛": 0, "陽台": 0]), order: 2)
+                .make(type: .floor, value: .multi([Localized.Form.floorCurrent: 0, Localized.Form.floorTotal: 0]), order: 1),
+                .make(type: .layout, value: .multi([Localized.Form.layoutRooms: 0, Localized.Form.layoutLivingRooms: 0, Localized.Form.layoutBathrooms: 0, Localized.Form.layoutBalconies: 0]), order: 2)
             ],
             order: 0
         )
     }
-    
+
     private func makeParkingSection() -> PropertySection {
-        return PropertySection(
+        PropertySection(
             id: UUID(),
             type: .parking,
             items: [
@@ -46,9 +46,9 @@ struct PropertyNotesDependencyMock: PropertyNotesDependency {
             order: 1
         )
     }
-    
+
     private func makeCommunitySection() -> PropertySection {
-        return PropertySection(
+        PropertySection(
             id: UUID(),
             type: .community,
             items: [
@@ -58,7 +58,7 @@ struct PropertyNotesDependencyMock: PropertyNotesDependency {
             order: 2
         )
     }
-    
+
     func saveLocally(_ property: Property) async throws {
         guard property.sections.count > 0 else {
             throw PropertyError.invalidData(reason: "Property must have at least one section")

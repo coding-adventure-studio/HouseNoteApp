@@ -1,0 +1,58 @@
+// MARK: - Common Actions
+"common_cancel" = "取消";
+"common_confirm" = "確定";
+"common_save" = "儲存";
+
+// MARK: - Section Types
+"section_basic_info" = "基本資訊";
+"section_parking" = "車位資訊";
+"section_community" = "社區資訊";
+
+// MARK: - Basic Info Fields
+"field_address" = "地址";
+"field_floor" = "樓層";
+"field_age" = "屋齡";
+"field_layout" = "格局";
+"field_brand" = "建商品牌";
+"field_price" = "開價";
+"field_market_price" = "實價登錄";
+
+// MARK: - Parking Fields
+"field_parking_location" = "車位位置";
+"field_parking_type" = "車位型態";
+"field_charging_facility" = "充電設施";
+
+// MARK: - Community Fields
+"field_management_fee" = "管理費";
+"field_shared_facilities" = "公設";
+
+// MARK: - Layout Related
+"layout_room" = "房";
+"layout_living_room" = "廳";
+"layout_bathroom" = "衛";
+"layout_balcony" = "陽台";
+
+// MARK: - Format Strings
+"format_input_placeholder" = "請輸入%@";
+"format_floor_info" = "%d樓 / 共%d樓";
+"format_layout_info" = "%d房%d廳%d衛%d陽台";
+
+// MARK: - Status Messages
+"msg_empty_input" = "尚未填寫";
+"msg_empty_selection" = "尚未選擇";
+"msg_save_success" = "儲存成功：%@";
+
+// MARK: - UI Elements
+"ui_property_name" = "建案名稱";
+"ui_add_photo" = "新增相片";
+"ui_new_note" = "新筆記";
+
+// MARK: - Form Fields
+"form_floor_current" = "所在樓層";
+"form_floor_total" = "總樓層";
+"form_layout_rooms" = "房";
+"form_layout_living_rooms" = "廳";
+"form_layout_bathrooms" = "衛";
+"form_layout_balconies" = "陽台";
+"form_elevator_households" = "戶";
+"form_elevator_lifts" = "梯";

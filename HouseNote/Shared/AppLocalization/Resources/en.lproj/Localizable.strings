@@ -1,0 +1,58 @@
+// MARK: - Common Actions
+"common_cancel" = "Cancel";
+"common_confirm" = "Confirm";
+"common_save" = "Save";
+
+// MARK: - Section Types
+"section_basic_info" = "Basic Info";
+"section_parking" = "Parking";
+"section_community" = "Community";
+
+// MARK: - Basic Info Fields
+"field_address" = "Address";
+"field_floor" = "Floor";
+"field_age" = "Building Age";
+"field_layout" = "Layout";
+"field_brand" = "Developer Brand";
+"field_price" = "Asking Price";
+"field_market_price" = "Market Price";
+
+// MARK: - Parking Fields
+"field_parking_location" = "Parking Location";
+"field_parking_type" = "Parking Type";
+"field_charging_facility" = "Charging Facility";
+
+// MARK: - Community Fields
+"field_management_fee" = "Management Fee";
+"field_shared_facilities" = "Shared Facilities";
+
+// MARK: - Layout Related
+"layout_room" = "Room";
+"layout_living_room" = "Living Room";
+"layout_bathroom" = "Bathroom";
+"layout_balcony" = "Balcony";
+
+// MARK: - Format Strings
+"format_input_placeholder" = "Please enter %@";
+"format_floor_info" = "Floor %d of %d";
+"format_layout_info" = "%dR%dL%dB%dBal";
+
+// MARK: - Status Messages
+"msg_empty_input" = "Not filled";
+"msg_empty_selection" = "Not selected";
+"msg_save_success" = "Successfully saved: %@";
+
+// MARK: - UI Elements
+"ui_property_name" = "Property Name";
+"ui_add_photo" = "Add Photo";
+"ui_new_note" = "New Note";
+
+// MARK: - Form Fields
+"form_floor_current" = "Current Floor";
+"form_floor_total" = "Total Floors";
+"form_layout_rooms" = "Room";
+"form_layout_living_rooms" = "Living Room";
+"form_layout_bathrooms" = "Bathroom";
+"form_layout_balconies" = "Balcony";
+"form_elevator_households" = "Households";
+"form_elevator_lifts" = "Lifts";

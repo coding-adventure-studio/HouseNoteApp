@@ -16,16 +16,29 @@ struct PickerState: Identifiable {
 }
 
 enum ItemFieldType: String, CaseIterable, Identifiable {
-    case floorCurrent = "所在樓層"
-    case floorTotal = "總樓層"
-    case layoutRooms = "房"
-    case layoutLivingRooms = "廳"
-    case layoutBathrooms = "衛"
-    case layoutBalconies = "陽台"
-    case elevatorHouseholds = "戶"
-    case elevatorLifts = "梯"
+    case floorCurrent
+    case floorTotal
+    case layoutRooms
+    case layoutLivingRooms
+    case layoutBathrooms
+    case layoutBalconies
+    case elevatorHouseholds
+    case elevatorLifts
 
     var id: String { rawValue }
+
+    var localized: String {
+        switch self {
+        case .floorCurrent: Localized.Form.floorCurrent
+        case .floorTotal: Localized.Form.floorTotal
+        case .layoutRooms: Localized.Form.layoutRooms
+        case .layoutLivingRooms: Localized.Form.layoutLivingRooms
+        case .layoutBathrooms: Localized.Form.layoutBathrooms
+        case .layoutBalconies: Localized.Form.layoutBalconies
+        case .elevatorHouseholds: Localized.Form.elevatorHouseholds
+        case .elevatorLifts: Localized.Form.elevatorLifts
+        }
+    }
 
     var range: ClosedRange<Int> {
         switch self {
@@ -43,17 +56,17 @@ enum ItemFieldType: String, CaseIterable, Identifiable {
     var suffix: String {
         switch self {
         case .floorCurrent, .floorTotal: "F"
-        case .layoutRooms: "房"
-        case .layoutLivingRooms: "廳"
-        case .layoutBathrooms: "衛"
-        case .layoutBalconies: "陽台"
-        case .elevatorHouseholds: "戶"
-        case .elevatorLifts: "梯"
+        case .layoutRooms: Localized.Form.layoutRooms
+        case .layoutLivingRooms: Localized.Form.layoutLivingRooms
+        case .layoutBathrooms: Localized.Form.layoutBathrooms
+        case .layoutBalconies: Localized.Form.layoutBalconies
+        case .elevatorHouseholds: Localized.Form.elevatorHouseholds
+        case .elevatorLifts: Localized.Form.elevatorLifts
         }
     }
 
     var numberField: NumberField {
-        NumberField(label: rawValue, range: range, suffix: suffix)
+        NumberField(label: localized, range: range, suffix: suffix)
     }
 }
 
