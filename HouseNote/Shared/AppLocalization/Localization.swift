@@ -43,6 +43,7 @@ public enum Localized {
         public enum Community {
             public static var managementFee: String { localized("field_management_fee") }
             public static var sharedFacilities: String { localized("field_shared_facilities") }
+            public static var ventilation: String { localized("field_ventilation") }
         }
 
         public enum Layout {
@@ -88,10 +89,16 @@ public enum Localized {
         public static var elevatorHouseholdRatio: String { localized("form_elevator_household_ratio") }
         public static var householdsPerFloor: String { localized("form_households_per_floor") }
         public static var orientation: String { localized("form_orientation") }
+        public static var orientationSit: String { localized("form_orientation_sit") }
+        public static var orientationFace: String { localized("form_orientation_face") }
         public static var parkingLocation: String { localized("form_parking_location") }
         public static var parkingTypeDetail: String { localized("form_parking_type_detail") }
         public static var tenantCount: String { localized("form_tenant_count") }
         public static var vacantCount: String { localized("form_vacant_count") }
         public static var negativeFacilities: String { localized("form_negative_facilities") }
+    }
+
+    public enum Photo {
+        public static var selectAnother: String { localized("photo_select_another") }
     }
 }

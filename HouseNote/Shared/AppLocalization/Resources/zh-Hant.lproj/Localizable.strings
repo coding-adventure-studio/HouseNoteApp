@@ -69,6 +69,8 @@
 "form_tenant_count" = "租戶數";
 "form_vacant_count" = "空屋數";
 "form_negative_facilities" = "嫌惡設施";
+"form_orientation_sit" = "坐向";
+"form_orientation_face" = "朝向";
 
 "tag_gas_station" = "加油站";
 "tag_columbarium" = "靈骨塔";
@@ -77,3 +79,7 @@
 "tag_dump" = "垃圾場";
 "tag_graveyard" = "墓地";
 "tag_funeral_home" = "殯儀館";
+"field_ventilation" = "通風性";
+
+// MARK: - Photo Actions
+"photo_select_another" = "選擇其他照片";

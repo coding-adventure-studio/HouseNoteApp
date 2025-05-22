@@ -31,6 +31,21 @@ struct FieldTemplate {
     let label: String
     let inputKind: InputKind
     let defaultValue: ItemValue
+    let hasPhoto: Bool
+
+    init(
+        type: ItemType,
+        label: String,
+        inputKind: InputKind,
+        defaultValue: ItemValue,
+        hasPhoto: Bool = false
+    ) {
+        self.type = type
+        self.label = label
+        self.inputKind = inputKind
+        self.defaultValue = defaultValue
+        self.hasPhoto = hasPhoto
+    }
 
     var displayText: (ItemValue) -> String {
         type.displayFormatter
@@ -83,6 +98,7 @@ struct PropertySection: Identifiable {
             case let .number(value): value != 0
             case let .multi(dict): dict.values.contains { $0 != 0 }
             case let .tagSelector(tags): !tags.isEmpty
+            case let .slider(value): value != 0
             }
         }.count
     }
@@ -99,6 +115,15 @@ struct PropertyItem: Identifiable {
     var isStarred: Bool
     var status: ItemStatus
     var order: Int
+}
+
+extension ItemValue {
+    var sliderValueString: String {
+        if case let .slider(val) = self {
+            return String(Int(val))
+        }
+        return "-"
+    }
 }
 
 extension PropertyItem {
@@ -130,6 +155,7 @@ enum ItemType {
     case address, floor, age, layout, brand, price, marketPrice
     case totalHouseholds, elevatorHouseholdRatio, householdsPerFloor
     case orientation
+    case ventilation
     case parkingLocation, parkingType, parkingTypeDetail, chargingAvailable
     case managementFee, sharedFacilities, tenantCount, vacantCount
     case negativeFacilities
@@ -156,6 +182,7 @@ enum ItemType {
         case .chargingAvailable: Localized.Field.Parking.charging
         case .negativeFacilities: Localized.Form.negativeFacilities
         case .orientation: Localized.Form.orientation
+        case .ventilation: Localized.Field.Community.ventilation
         }
     }
 
@@ -216,6 +243,7 @@ enum ItemValue {
     case number(Int)
     case multi([String: Int])
     case tagSelector(TagSelection)
+    case slider(Double)
 }
 
 extension ItemValue {
@@ -229,6 +257,8 @@ extension ItemValue {
             values.map { "\($0.key): \($0.value)" }.joined(separator: " ")
         case let .tagSelector(selection):
             selection.selectedTags.isEmpty ? Localized.Message.emptySelection : selection.selectedTags.joined(separator: ", ")
+        case let .slider(value):
+            "\(value)"
         }
     }
 }
@@ -287,6 +317,7 @@ enum InputKind {
     case numberField
     case multiPicker(title: String, fields: [String])
     case tagSelector(category: TagSelectorCategory)
+    case slider(min: Double, max: Double, step: Double)
 }
 
 // MARK: - Utilities
@@ -303,7 +334,8 @@ func fieldTemplate(for type: ItemType) -> FieldTemplate {
                 type: type,
                 label: type.label,
                 inputKind: .textField,
-                defaultValue: .text("")
+                defaultValue: .text(""),
+                hasPhoto: false
             )
         #endif
     }

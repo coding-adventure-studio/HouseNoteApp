@@ -19,6 +19,7 @@
 "field_brand" = "Developer Brand";
 "field_price" = "Asking Price";
 "field_market_price" = "Market Price";
+"field_ventilation" = "Ventilation";
 
 // MARK: - Parking Fields
 "field_parking_location" = "Parking Location";
@@ -64,6 +65,8 @@
 "form_elevator_household_ratio" = "Elevator/Household Ratio";
 "form_households_per_floor" = "Households per Floor";
 "form_orientation" = "Orientation";
+"form_orientation_sit" = "Sitting";
+"form_orientation_face" = "Facing";
 "form_parking_location" = "Parking Location";
 "form_parking_type_detail" = "Parking Type Detail";
 "form_tenant_count" = "Tenant Count";
@@ -77,3 +80,6 @@
 "tag_dump" = "Dump";
 "tag_graveyard" = "Graveyard";
 "tag_funeral_home" = "Funeral Home";
+
+// MARK: - Photo Actions
+"photo_select_another" = "Select Another Photo";

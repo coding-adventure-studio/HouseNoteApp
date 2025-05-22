@@ -39,7 +39,8 @@ let residentInfoSection = SectionTemplate(
 let interiorConditionSection = SectionTemplate(
     type: .interiorCondition,
     fields: [
-        FieldTemplate(type: .orientation, label: Localized.Form.orientation, inputKind: .multiPicker(title: Localized.Form.orientation, fields: ["坐", "朝"]), defaultValue: .multi(["坐": 0, "朝": 0]))
+        FieldTemplate(type: .orientation, label: Localized.Form.orientation, inputKind: .multiPicker(title: Localized.Form.orientation, fields: [Localized.Form.orientationSit, Localized.Form.orientationFace]), defaultValue: .multi([Localized.Form.orientationSit: 0, Localized.Form.orientationFace: 0]), hasPhoto: false),
+        FieldTemplate(type: .ventilation, label: Localized.Field.Community.ventilation, inputKind: .slider(min: 0, max: 100, step: 1), defaultValue: .slider(50), hasPhoto: true)
     ]
 )
 
