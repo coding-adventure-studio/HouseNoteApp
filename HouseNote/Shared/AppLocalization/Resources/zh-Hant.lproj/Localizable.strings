@@ -23,7 +23,7 @@
 // MARK: - Parking Fields
 "field_parking_location" = "車位位置";
 "field_parking_type" = "車位型態";
-"field_charging_facility" = "充電設施";
+"field_charging_facility" = "可安裝充電樁";
 
 // MARK: - Community Fields
 "field_management_fee" = "管理費";

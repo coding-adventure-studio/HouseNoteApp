@@ -318,6 +318,7 @@ enum InputKind {
     case multiPicker(title: String, fields: [String])
     case tagSelector(category: TagSelectorCategory)
     case slider(min: Double, max: Double, step: Double)
+    case toggle
 }
 
 // MARK: - Utilities

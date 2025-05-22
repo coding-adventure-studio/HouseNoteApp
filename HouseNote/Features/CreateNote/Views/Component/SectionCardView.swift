@@ -159,6 +159,18 @@ struct PropertyItemRowView: View {
                 trailingAccessoryView()
             }
 
+        case .toggle:
+            Toggle("", isOn: Binding(
+                get: {
+                    if case let .number(val) = item.value { return val == 1 }
+                    return false
+                },
+                set: { newValue in
+                    item.value = .number(newValue ? 1 : 0)
+                }
+            ))
+            .labelsHidden()
+
         default:
             Text("⚠️ 尚未實作的 inputKind")
         }

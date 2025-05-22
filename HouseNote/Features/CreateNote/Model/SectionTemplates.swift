@@ -50,7 +50,7 @@ let parkingSection = SectionTemplate(
         FieldTemplate(type: .parkingLocation, label: Localized.Field.Parking.location, inputKind: .textField, defaultValue: .text("")),
         FieldTemplate(type: .parkingType, label: Localized.Field.Parking.type, inputKind: .textField, defaultValue: .text("")),
         FieldTemplate(type: .parkingTypeDetail, label: Localized.Form.parkingTypeDetail, inputKind: .textField, defaultValue: .text("")),
-        FieldTemplate(type: .chargingAvailable, label: Localized.Field.Parking.charging, inputKind: .numberField, defaultValue: .number(0))
+        FieldTemplate(type: .chargingAvailable, label: Localized.Field.Parking.charging, inputKind: .toggle, defaultValue: .number(0))
     ]
 )
 
