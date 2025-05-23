@@ -159,6 +159,7 @@ enum ItemType {
     case parkingLocation, parkingType, parkingTypeDetail, chargingAvailable
     case managementFee, sharedFacilities, tenantCount, vacantCount
     case negativeFacilities
+    case note
 
     var label: String {
         switch self {
@@ -180,6 +181,7 @@ enum ItemType {
         case .parkingType: Localized.Field.Parking.type
         case .parkingTypeDetail: Localized.Form.parkingTypeDetail
         case .chargingAvailable: Localized.Field.Parking.charging
+        case .note: Localized.Field.note
         case .negativeFacilities: Localized.Form.negativeFacilities
         case .orientation: Localized.Form.orientation
         case .ventilation: Localized.Field.Community.ventilation

@@ -62,6 +62,8 @@ public enum Localized {
                 String(format: localized("format_floor_info"), current, total)
             }
         }
+
+        public static var note: String { localized("field_note") }
     }
 
     public enum Message {

@@ -77,14 +77,19 @@ struct PropertyItemRowView: View {
         switch fieldTemplate.inputKind {
         case .textField:
             if case let .text(value) = item.value {
-                TextField("請輸入\(fieldTemplate.label)", text: Binding(
-                    get: { value },
-                    set: { item.value = .text($0) }
-                ))
-                .font(.subheadline)
-                .submitLabel(.done)
-                .onSubmit {
-                    hideKeyboard()
+                HStack(spacing: 8) {
+                    TextField("請輸入\(fieldTemplate.label)", text: Binding(
+                        get: { value },
+                        set: { item.value = .text($0) }
+                    ))
+                    .font(.subheadline)
+                    .submitLabel(.done)
+                    .onSubmit {
+                        hideKeyboard()
+                    }
+                    if fieldTemplate.hasPhoto {
+                        trailingAccessoryView()
+                    }
                 }
             } else {
                 Text("⚠️ 預期是 text，但實際是 \(item.value)")
@@ -156,7 +161,9 @@ struct PropertyItemRowView: View {
                 .frame(maxWidth: 150)
                 Text("\(item.value.sliderValueString)")
                     .frame(width: 40, alignment: .leading)
-                trailingAccessoryView()
+                if fieldTemplate.hasPhoto {
+                    trailingAccessoryView()
+                }
             }
 
         case .toggle:
@@ -179,34 +186,32 @@ struct PropertyItemRowView: View {
     @ViewBuilder
     private func trailingAccessoryView() -> some View {
         Group {
-            if fieldTemplate.hasPhoto {
-                if let image = selectedImage {
-                    Menu {
-                        Button(action: {
-                            showImagePicker = true
-                        }) {
-                            Label(Localized.Photo.selectAnother, systemImage: "photo.on.rectangle")
-                        }
-
-                        Button(role: .destructive, action: {
-                            selectedImage = nil
-                        }) {
-                            Label(Localized.Common.delete, systemImage: "trash")
-                        }
-                    } label: {
-                        Image(uiImage: image)
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .clipShape(RoundedRectangle(cornerRadius: 6))
-                    }
-                } else {
+            if let image = selectedImage {
+                Menu {
                     Button(action: {
                         showImagePicker = true
                     }) {
-                        Image(systemName: "camera")
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.gray)
+                        Label(Localized.Photo.selectAnother, systemImage: "photo.on.rectangle")
                     }
+
+                    Button(role: .destructive, action: {
+                        selectedImage = nil
+                    }) {
+                        Label(Localized.Common.delete, systemImage: "trash")
+                    }
+                } label: {
+                    Image(uiImage: image)
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                }
+            } else {
+                Button(action: {
+                    showImagePicker = true
+                }) {
+                    Image(systemName: "camera")
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.gray)
                 }
             }
         }

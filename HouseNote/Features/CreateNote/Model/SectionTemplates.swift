@@ -23,7 +23,8 @@ let basicInfoSection = SectionTemplate(
         FieldTemplate(type: .layout, label: Localized.Field.Basic.layout, inputKind: .multiPicker(title: Localized.Field.Basic.layout, fields: ItemType.layoutFieldLabels), defaultValue: .multi(["房": 0, "廳": 0, "衛": 0, "陽台": 0])),
         FieldTemplate(type: .brand, label: Localized.Field.Basic.brand, inputKind: .textField, defaultValue: .text("")),
         FieldTemplate(type: .price, label: Localized.Field.Basic.price, inputKind: .numberField, defaultValue: .number(0)),
-        FieldTemplate(type: .marketPrice, label: Localized.Field.Basic.marketPrice, inputKind: .numberField, defaultValue: .number(0))
+        FieldTemplate(type: .marketPrice, label: Localized.Field.Basic.marketPrice, inputKind: .numberField, defaultValue: .number(0)),
+        FieldTemplate(type: .note, label: Localized.Field.note, inputKind: .textField, defaultValue: .text(""), hasPhoto: true)
     ]
 )
 

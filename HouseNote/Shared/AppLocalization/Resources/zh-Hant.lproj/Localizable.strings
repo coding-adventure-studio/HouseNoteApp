@@ -81,5 +81,9 @@
 "tag_funeral_home" = "殯儀館";
 "field_ventilation" = "通風性";
 
+// MARK: - Common Fields
+"field_note" = "備註";
+
+
 // MARK: - Photo Actions
 "photo_select_another" = "選擇其他照片";

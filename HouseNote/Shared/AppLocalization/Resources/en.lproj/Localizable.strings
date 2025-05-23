@@ -81,5 +81,8 @@
 "tag_graveyard" = "Graveyard";
 "tag_funeral_home" = "Funeral Home";
 
+// MARK: - Common Fields
+"field_note" = "Note";
+
 // MARK: - Photo Actions
 "photo_select_another" = "Select Another Photo";
