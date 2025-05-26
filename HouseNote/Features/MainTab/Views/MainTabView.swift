@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @StateObject private var notesViewModel = NotesViewModel()
     var body: some View {
         TabView {
-            PropertyListView()
+            PropertyListView(viewModel: notesViewModel)
                 .tabItem {
                     Label("筆記列表", systemImage: "list.bullet")
                 }

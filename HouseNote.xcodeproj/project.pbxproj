@@ -33,6 +33,7 @@
 		3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC849862DB1643300F7DB55 /* MultiFieldNumberPickerView.swift */; };
 		3AC8498A2DB1E9A800F7DB55 /* FormPickerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC849892DB1E9A600F7DB55 /* FormPickerModels.swift */; };
 		3AF945AF2DE3F2D800FF8FA6 /* PropertyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF945AB2DE3F2D800FF8FA6 /* PropertyListView.swift */; };
+		3AF945BA2DE407B500FF8FA6 /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF945B92DE407B300FF8FA6 /* NotesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		3AC849862DB1643300F7DB55 /* MultiFieldNumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiFieldNumberPickerView.swift; sourceTree = "<group>"; };
 		3AC849892DB1E9A600F7DB55 /* FormPickerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPickerModels.swift; sourceTree = "<group>"; };
 		3AF945AB2DE3F2D800FF8FA6 /* PropertyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListView.swift; sourceTree = "<group>"; };
+		3AF945B92DE407B300FF8FA6 /* NotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -74,6 +76,11 @@
 		3AF945A52DE3F28100FF8FA6 /* MainTab */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = MainTab;
+			sourceTree = "<group>";
+		};
+		3AF945B72DE4079200FF8FA6 /* Model */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -206,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				3AF945A52DE3F28100FF8FA6 /* MainTab */,
+				3AF945B62DE4078800FF8FA6 /* Notes */,
 				3AF945AE2DE3F2D800FF8FA6 /* PropertyList */,
 				3AA4B9FE2DB8C83C00679E3B /* CreateNote */,
 			);
@@ -292,6 +300,23 @@
 			path = PropertyList;
 			sourceTree = "<group>";
 		};
+		3AF945B62DE4078800FF8FA6 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				3AF945B82DE4079C00FF8FA6 /* ViewModel */,
+				3AF945B72DE4079200FF8FA6 /* Model */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		3AF945B82DE4079C00FF8FA6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3AF945B92DE407B300FF8FA6 /* NotesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -312,6 +337,7 @@
 			fileSystemSynchronizedGroups = (
 				3AB069882DC4B4EC0067B739 /* Extensions */,
 				3AF945A52DE3F28100FF8FA6 /* MainTab */,
+				3AF945B72DE4079200FF8FA6 /* Model */,
 			);
 			name = HouseNote;
 			packageProductDependencies = (
@@ -429,6 +455,7 @@
 				3A6205272D5350CB00B0507E /* PropertySectionsView.swift in Sources */,
 				3A5D0DDB2DB094FC0036040E /* SectionCardView.swift in Sources */,
 				3AA4BA082DB8CCCB00679E3B /* PropertyNotesDependency+Live.swift in Sources */,
+				3AF945BA2DE407B500FF8FA6 /* NotesViewModel.swift in Sources */,
 				3A6205282D5350CB00B0507E /* ScoreView.swift in Sources */,
 				3A56B2F42DDC25CF008C2BE1 /* ImagePicker.swift in Sources */,
 				3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */,
