@@ -6,7 +6,6 @@
 .DS_Store
 xcuserdata/
 .build/
-*.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcodeproj/project.xcworkspace/

@@ -32,6 +32,7 @@
 		3AB06A192DD2EBF70067B739 /* TagSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB06A182DD2EBF50067B739 /* TagSelectorView.swift */; };
 		3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC849862DB1643300F7DB55 /* MultiFieldNumberPickerView.swift */; };
 		3AC8498A2DB1E9A800F7DB55 /* FormPickerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC849892DB1E9A600F7DB55 /* FormPickerModels.swift */; };
+		3AF945AF2DE3F2D800FF8FA6 /* PropertyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF945AB2DE3F2D800FF8FA6 /* PropertyListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,12 +62,18 @@
 		3AB06A182DD2EBF50067B739 /* TagSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorView.swift; sourceTree = "<group>"; };
 		3AC849862DB1643300F7DB55 /* MultiFieldNumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiFieldNumberPickerView.swift; sourceTree = "<group>"; };
 		3AC849892DB1E9A600F7DB55 /* FormPickerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPickerModels.swift; sourceTree = "<group>"; };
+		3AF945AB2DE3F2D800FF8FA6 /* PropertyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3AB069882DC4B4EC0067B739 /* Extensions */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3AF945A52DE3F28100FF8FA6 /* MainTab */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MainTab;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -198,6 +205,8 @@
 		3AA4B9FD2DB8C83200679E3B /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				3AF945A52DE3F28100FF8FA6 /* MainTab */,
+				3AF945AE2DE3F2D800FF8FA6 /* PropertyList */,
 				3AA4B9FE2DB8C83C00679E3B /* CreateNote */,
 			);
 			path = Features;
@@ -267,6 +276,22 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		3AF945AC2DE3F2D800FF8FA6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3AF945AB2DE3F2D800FF8FA6 /* PropertyListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3AF945AE2DE3F2D800FF8FA6 /* PropertyList */ = {
+			isa = PBXGroup;
+			children = (
+				3AF945AC2DE3F2D800FF8FA6 /* Views */,
+			);
+			path = PropertyList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -286,6 +311,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				3AB069882DC4B4EC0067B739 /* Extensions */,
+				3AF945A52DE3F28100FF8FA6 /* MainTab */,
 			);
 			name = HouseNote;
 			packageProductDependencies = (
@@ -413,6 +439,7 @@
 				3A62052E2D5350CB00B0507E /* PropertyNotesViewModel.swift in Sources */,
 				3A5D0DD92DAFCD410036040E /* PropertyNotesContentView.swift in Sources */,
 				3AC8498A2DB1E9A800F7DB55 /* FormPickerModels.swift in Sources */,
+				3AF945AF2DE3F2D800FF8FA6 /* PropertyListView.swift in Sources */,
 				3A62056A2D55996C00B0507E /* PhotoSectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
