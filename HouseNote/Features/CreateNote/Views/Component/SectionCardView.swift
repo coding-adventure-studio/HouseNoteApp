@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SectionCardView: View {
     @Binding var section: PropertySection
-    @ObservedObject var viewModel: PropertyNotesViewModel
+    @ObservedObject var viewModel: EditNoteViewModel
 
     var body: some View {
         let indexedItems = Array(zip(section.items.indices, $section.items))

@@ -12,8 +12,8 @@ struct MainTabView: View {
                 }
                 .tag(0)
 
-            PropertyNotesView(
-                viewModel: PropertyNotesViewModel(dependency: PropertyNotesDependencyMock()),
+            EditNoteView(
+                viewModel: EditNoteViewModel(dependency: EditNoteDependencyMock()),
                 onSaveSuccess: { property in
                     notesViewModel.addNote(title: property.name, content: "\(property.id)")
                     selectedTab = 0

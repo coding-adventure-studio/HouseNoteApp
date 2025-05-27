@@ -1,13 +1,13 @@
 import SwiftUI
 
 #Preview {
-    PropertyNotesView(
-        viewModel: PropertyNotesViewModel(dependency: PropertyNotesDependencyMock())
+    EditNoteView(
+        viewModel: EditNoteViewModel(dependency: EditNoteDependencyMock())
     )
 }
 
-struct PropertyNotesView: View {
-    @StateObject var viewModel: PropertyNotesViewModel
+struct EditNoteView: View {
+    @StateObject var viewModel: EditNoteViewModel
     @State private var editingTitle = false
     var onSaveSuccess: ((Property) -> Void)? = nil
     @Environment(\.dismiss) private var dismiss
@@ -15,7 +15,7 @@ struct PropertyNotesView: View {
 
     var body: some View {
         NavigationView {
-            PropertyNotesContentView(viewModel: viewModel, editingTitle: $editingTitle)
+            EditNoteContentView(viewModel: viewModel, editingTitle: $editingTitle)
                 .navigationBarItems(
                     leading: BackButton(action: viewModel.dismissView),
                     trailing: HStack {

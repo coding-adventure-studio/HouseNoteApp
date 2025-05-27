@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct PropertyNotesContentView: View {
-    @ObservedObject var viewModel: PropertyNotesViewModel
+struct EditNoteContentView: View {
+    @ObservedObject var viewModel: EditNoteViewModel
     @Binding var editingTitle: Bool
 
     var body: some View {
@@ -14,7 +14,7 @@ struct PropertyNotesContentView: View {
                     totalCount: viewModel.viewData.totalCount
                 )
                 PhotoSectionView(onAddPhoto: viewModel.addPhoto)
-                PropertySectionsView(viewModel: viewModel)
+                EditNoteSectionsView(viewModel: viewModel)
             }
             .padding(.horizontal, 20)
             .background(Color(.systemGroupedBackground))
@@ -26,8 +26,8 @@ struct PropertyNotesContentView: View {
 }
 
 #Preview {
-    PropertyNotesContentView(
-        viewModel: PropertyNotesViewModel(dependency: PropertyNotesDependencyMock()),
+    EditNoteContentView(
+        viewModel: EditNoteViewModel(dependency: EditNoteDependencyMock()),
         editingTitle: .constant(true)
     )
 }

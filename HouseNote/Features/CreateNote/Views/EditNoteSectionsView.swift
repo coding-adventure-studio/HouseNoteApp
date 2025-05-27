@@ -1,13 +1,13 @@
 import SwiftUI
 
 #Preview {
-    PropertySectionsView(
-        viewModel: PropertyNotesViewModel(dependency: PropertyNotesDependencyMock())
+    EditNoteSectionsView(
+        viewModel: EditNoteViewModel(dependency: EditNoteDependencyMock())
     )
 }
 
-struct PropertySectionsView: View {
-    @ObservedObject var viewModel: PropertyNotesViewModel
+struct EditNoteSectionsView: View {
+    @ObservedObject var viewModel: EditNoteViewModel
     @State private var expandedSections: Set<UUID> = []
 
     var body: some View {

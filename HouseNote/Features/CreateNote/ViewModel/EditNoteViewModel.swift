@@ -23,7 +23,7 @@ class PropertyService: PropertyServiceProtocol {
     }
 }
 
-struct PropertyNoteViewData: Identifiable {
+struct EditNoteViewData: Identifiable {
     let id: UUID
     let name: String
     let advantageCount: Int
@@ -31,7 +31,7 @@ struct PropertyNoteViewData: Identifiable {
     let totalCount: Int
 }
 
-class PropertyNotesViewModel: ObservableObject, PropertyItemManageable {
+class EditNoteViewModel: ObservableObject, PropertyItemManageable {
     /// Input
     @Published var showStarredOnly: Bool = false
     @Published var saveSuccess: Bool = false
@@ -39,14 +39,14 @@ class PropertyNotesViewModel: ObservableObject, PropertyItemManageable {
     /// Output
     @Published var property: Property {
         didSet {
-            viewData = PropertyNotesViewModel.makeViewData(from: property)
+            viewData = EditNoteViewModel.makeViewData(from: property)
         }
     }
 
-    @Published private(set) var viewData: PropertyNoteViewData
+    @Published private(set) var viewData: EditNoteViewData
     @Published private(set) var filteredSections: [PropertySection] = []
 
-    private let dependency: PropertyNotesDependency
+    private let dependency: EditNoteDependency
     private let service: PropertyServiceProtocol
     private var cancellables = Set<AnyCancellable>()
 
@@ -59,11 +59,11 @@ class PropertyNotesViewModel: ObservableObject, PropertyItemManageable {
 
     // MARK: - Init
 
-    init(service: PropertyServiceProtocol = PropertyService(), dependency: PropertyNotesDependency) {
+    init(service: PropertyServiceProtocol = PropertyService(), dependency: EditNoteDependency) {
         self.service = service
         self.dependency = dependency
         property = dependency.fetchInitialTemplate()
-        viewData = PropertyNotesViewModel.makeViewData(from: dependency.fetchInitialTemplate())
+        viewData = EditNoteViewModel.makeViewData(from: dependency.fetchInitialTemplate())
         setupBindings()
     }
 
@@ -164,14 +164,14 @@ class PropertyNotesViewModel: ObservableObject, PropertyItemManageable {
 
     // MARK: - Helper Methods
 
-    static func makeViewData(from property: Property) -> PropertyNoteViewData {
+    static func makeViewData(from property: Property) -> EditNoteViewData {
         let items = property.sections.flatMap(\.items)
 
         let advantages = items.filter { $0.status == ItemStatus.advantage }.count
         let disadvantages = items.filter { $0.status == ItemStatus.disadvantage }.count
         let total = items.count
 
-        return PropertyNoteViewData(
+        return EditNoteViewData(
             id: property.id,
             name: property.name,
             advantageCount: advantages,
