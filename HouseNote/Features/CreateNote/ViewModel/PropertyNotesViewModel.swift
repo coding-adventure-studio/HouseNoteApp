@@ -34,6 +34,7 @@ struct PropertyNoteViewData: Identifiable {
 class PropertyNotesViewModel: ObservableObject, PropertyItemManageable {
     /// Input
     @Published var showStarredOnly: Bool = false
+    @Published var saveSuccess: Bool = false
 
     /// Output
     @Published var property: Property {
@@ -90,6 +91,9 @@ class PropertyNotesViewModel: ObservableObject, PropertyItemManageable {
         Task {
             do {
                 try await service.saveProperty(property)
+                DispatchQueue.main.async {
+                    self.saveSuccess = true
+                }
             } catch {
                 print("Save failed: \(error)")
             }

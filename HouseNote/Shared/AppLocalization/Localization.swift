@@ -69,6 +69,7 @@ public enum Localized {
     public enum Message {
         public static var emptyInput: String { localized("msg_empty_input") }
         public static var emptySelection: String { localized("msg_empty_selection") }
+        public static var saveSuccess: String { localized("msg_save_success") }
     }
 
     public enum UI {

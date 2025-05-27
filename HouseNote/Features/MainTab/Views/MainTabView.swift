@@ -2,19 +2,27 @@ import SwiftUI
 
 struct MainTabView: View {
     @StateObject private var notesViewModel = NotesViewModel()
+    @State private var selectedTab = 0
+
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             PropertyListView(viewModel: notesViewModel)
                 .tabItem {
                     Label("筆記列表", systemImage: "list.bullet")
                 }
+                .tag(0)
 
             PropertyNotesView(
-                viewModel: PropertyNotesViewModel(dependency: PropertyNotesDependencyMock())
+                viewModel: PropertyNotesViewModel(dependency: PropertyNotesDependencyMock()),
+                onSaveSuccess: { property in
+                    notesViewModel.addNote(title: property.name, content: "\(property.id)")
+                    selectedTab = 0
+                }
             )
             .tabItem {
                 Label("新增筆記", systemImage: "plus.circle")
             }
+            .tag(1)
         }
     }
 }

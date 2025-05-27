@@ -9,6 +9,9 @@ import SwiftUI
 struct PropertyNotesView: View {
     @StateObject var viewModel: PropertyNotesViewModel
     @State private var editingTitle = false
+    var onSaveSuccess: ((Property) -> Void)? = nil
+    @Environment(\.dismiss) private var dismiss
+    @State private var showSuccessAlert = false
 
     var body: some View {
         NavigationView {
@@ -29,6 +32,17 @@ struct PropertyNotesView: View {
                         )
                     }
                 }
+        }
+        .onChange(of: viewModel.saveSuccess) {
+            if viewModel.saveSuccess {
+                showSuccessAlert = true
+            }
+        }
+        .alert(Localized.Message.saveSuccess, isPresented: $showSuccessAlert) {
+            Button(Localized.Common.confirm) {
+                onSaveSuccess?(viewModel.property)
+                viewModel.saveSuccess = false
+            }
         }
     }
 }
