@@ -177,9 +177,6 @@ struct PropertyItemRowView: View {
                 }
             ))
             .labelsHidden()
-
-        default:
-            Text("⚠️ 尚未實作的 inputKind")
         }
     }
 

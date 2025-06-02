@@ -7,6 +7,7 @@ protocol PropertyServiceProtocol {
     func loadProperty(id: UUID) async throws -> Property
 }
 
+@MainActor
 protocol PropertyItemManageable {
     func toggleStar(for id: UUID)
     func toggleStatus(for id: UUID)
@@ -31,10 +32,12 @@ struct EditNoteViewData: Identifiable {
     let totalCount: Int
 }
 
+@MainActor
 class EditNoteViewModel: ObservableObject, PropertyItemManageable {
     /// Input
     @Published var showStarredOnly: Bool = false
     @Published var saveSuccess: Bool = false
+    @Published var saveError: Bool = false
 
     /// Output
     @Published var property: Property {
@@ -110,7 +113,7 @@ class EditNoteViewModel: ObservableObject, PropertyItemManageable {
                     self.saveSuccess = true
                 }
             } catch {
-                print("Save failed: \(error)")
+                self.saveError = true
             }
         }
     }
