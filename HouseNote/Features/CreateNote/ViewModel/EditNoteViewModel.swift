@@ -59,12 +59,27 @@ class EditNoteViewModel: ObservableObject, PropertyItemManageable {
 
     // MARK: - Init
 
-    init(service: PropertyServiceProtocol = PropertyService(), dependency: EditNoteDependency) {
+    init(
+        mode: NoteEditorMode,
+        service: PropertyServiceProtocol = PropertyService(),
+        dependency: EditNoteDependency
+    ) {
         self.service = service
         self.dependency = dependency
-        property = dependency.fetchInitialTemplate()
-        viewData = EditNoteViewModel.makeViewData(from: dependency.fetchInitialTemplate())
+
+        let property = EditNoteViewModel.makeProperty(mode: mode, dependency: dependency)
+        self.property = property
+        viewData = EditNoteViewModel.makeViewData(from: property)
         setupBindings()
+    }
+
+    private static func makeProperty(mode: NoteEditorMode, dependency: EditNoteDependency) -> Property {
+        switch mode {
+        case .create:
+            dependency.fetchInitialTemplate()
+        case let .edit(note):
+            note.toProperty()
+        }
     }
 
     // MARK: - Bindings

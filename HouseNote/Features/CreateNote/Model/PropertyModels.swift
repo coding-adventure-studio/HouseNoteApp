@@ -2,6 +2,11 @@ import Foundation
 import SwiftUI
 import SwiftUICore
 
+enum NoteEditorMode {
+    case create
+    case edit(Note)
+}
+
 // MARK: - Section & Field Template Definitions
 
 enum NoteSectionType: String, CaseIterable, Identifiable {

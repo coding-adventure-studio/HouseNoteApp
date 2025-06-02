@@ -27,7 +27,10 @@ struct EditNoteContentView: View {
 
 #Preview {
     EditNoteContentView(
-        viewModel: EditNoteViewModel(dependency: EditNoteDependencyMock()),
+        viewModel: EditNoteViewModel(
+            mode: .create,
+            dependency: EditNoteDependencyMock()
+        ),
         editingTitle: .constant(true)
     )
 }

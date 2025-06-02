@@ -3,6 +3,7 @@ import SwiftUI
 struct MainTabView: View {
     @StateObject private var notesViewModel = NotesViewModel()
     @State private var selectedTab = 0
+    private let dependency = EditNoteDependencyMock()
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -13,9 +14,9 @@ struct MainTabView: View {
                 .tag(0)
 
             EditNoteView(
-                viewModel: EditNoteViewModel(dependency: EditNoteDependencyMock()),
+                mode: .create,
                 onSaveSuccess: { property in
-                    notesViewModel.addNote(title: property.name, content: "\(property.id)")
+                    notesViewModel.addNote(title: property.name, content: "\(property.id)", sections: property.sections)
                     selectedTab = 0
                 }
             )

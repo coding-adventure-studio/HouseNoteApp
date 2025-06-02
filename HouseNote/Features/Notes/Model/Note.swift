@@ -5,4 +5,15 @@ struct Note: Identifiable {
     var title: String
     var content: String
     var date: Date = .init()
+    var sections: [PropertySection]
+}
+
+extension Note {
+    func toProperty() -> Property {
+        Property(
+            id: id,
+            name: title,
+            sections: sections
+        )
+    }
 }

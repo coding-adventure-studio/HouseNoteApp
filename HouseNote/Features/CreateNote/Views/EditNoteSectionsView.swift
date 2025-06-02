@@ -2,7 +2,10 @@ import SwiftUI
 
 #Preview {
     EditNoteSectionsView(
-        viewModel: EditNoteViewModel(dependency: EditNoteDependencyMock())
+        viewModel: EditNoteViewModel(
+            mode: .create,
+            dependency: EditNoteDependencyMock()
+        )
     )
 }
 

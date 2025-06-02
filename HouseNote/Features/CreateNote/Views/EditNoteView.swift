@@ -1,9 +1,7 @@
 import SwiftUI
 
 #Preview {
-    EditNoteView(
-        viewModel: EditNoteViewModel(dependency: EditNoteDependencyMock())
-    )
+    EditNoteView(mode: .create)
 }
 
 struct EditNoteView: View {
@@ -12,6 +10,15 @@ struct EditNoteView: View {
     var onSaveSuccess: ((Property) -> Void)? = nil
     @Environment(\.dismiss) private var dismiss
     @State private var showSuccessAlert = false
+
+    init(
+        mode: NoteEditorMode,
+        dependency: EditNoteDependency = EditNoteDependencyMock(),
+        onSaveSuccess: ((Property) -> Void)? = nil
+    ) {
+        _viewModel = StateObject(wrappedValue: EditNoteViewModel(mode: mode, dependency: dependency))
+        self.onSaveSuccess = onSaveSuccess
+    }
 
     var body: some View {
         NavigationView {
