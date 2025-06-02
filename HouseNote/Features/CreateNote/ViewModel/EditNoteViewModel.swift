@@ -127,6 +127,11 @@ class EditNoteViewModel: ObservableObject, PropertyItemManageable {
         // TODO: Implement add photo logic
     }
 
+    func reset() {
+        self.property = dependency.fetchInitialTemplate()
+        viewData = EditNoteViewModel.makeViewData(from: self.property)
+    }
+
     // MARK: - PropertyItemManageable Implementation
 
     func toggleStar(for id: UUID) {

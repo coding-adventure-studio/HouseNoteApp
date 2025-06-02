@@ -1,11 +1,13 @@
 import SwiftUI
 
 #Preview {
-    EditNoteView(mode: .create)
+    EditNoteView(
+        viewModel: EditNoteViewModel(mode: .create, dependency: EditNoteDependencyMock())
+    )
 }
 
 struct EditNoteView: View {
-    @StateObject var viewModel: EditNoteViewModel
+    @ObservedObject var viewModel: EditNoteViewModel
     @State private var editingTitle = false
     var onSaveSuccess: ((Property) -> Void)? = nil
     @Environment(\.dismiss) private var dismiss

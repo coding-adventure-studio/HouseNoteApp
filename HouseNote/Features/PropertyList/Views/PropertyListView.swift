@@ -28,9 +28,10 @@ struct PropertyListView: View {
                 get: { selectedProperty != nil },
                 set: { isActive in if !isActive { selectedProperty = nil } }
             )) {
-                if let property = selectedProperty {
+                if let property = selectedProperty,
+                   let note = viewModel.notes.first(where: { $0.id == property.id }) {
                     EditNoteView(
-                        mode: .edit(viewModel.notes.first { $0.id == property.id }!),
+                        viewModel: EditNoteViewModel(mode: .edit(note), dependency: EditNoteDependencyMock()),
                         onSaveSuccess: { updatedProperty in
                             if let idx = viewModel.notes.firstIndex(where: { $0.id == updatedProperty.id }) {
                                 viewModel.notes[idx].sections = updatedProperty.sections

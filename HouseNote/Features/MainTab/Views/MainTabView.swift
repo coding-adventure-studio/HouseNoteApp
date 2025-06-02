@@ -1,8 +1,14 @@
 import SwiftUI
 
+enum MainTab: Hashable {
+    case list
+    case create
+}
+
 struct MainTabView: View {
     @StateObject private var notesViewModel = NotesViewModel()
-    @State private var selectedTab = 0
+    @State private var selectedTab: MainTab = .list
+    @StateObject private var newNoteViewModel = EditNoteViewModel(mode: .create, dependency: EditNoteDependencyMock())
     private let dependency = EditNoteDependencyMock()
 
     var body: some View {
@@ -11,19 +17,25 @@ struct MainTabView: View {
                 .tabItem {
                     Label("筆記列表", systemImage: "list.bullet")
                 }
-                .tag(0)
+                .tag(MainTab.list)
 
             EditNoteView(
-                mode: .create,
+                viewModel: newNoteViewModel,
                 onSaveSuccess: { property in
                     notesViewModel.addNote(title: property.name, content: "\(property.id)", sections: property.sections)
-                    selectedTab = 0
+                    selectedTab = .list
+                    newNoteViewModel.reset()
                 }
             )
             .tabItem {
                 Label("新增筆記", systemImage: "plus.circle")
             }
-            .tag(1)
+            .tag(MainTab.create)
+        }
+        .onChange(of: selectedTab) { tab in
+            if tab == .create {
+                newNoteViewModel.reset()
+            }
         }
     }
 }
