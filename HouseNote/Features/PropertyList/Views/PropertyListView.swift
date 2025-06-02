@@ -13,10 +13,7 @@ struct PropertyListView: View {
                     VStack(alignment: .leading) {
                         Text(note.title)
                             .font(.headline)
-                        Text(note.content)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                        Text(note.date, style: .date)
+                        Text("創建時間：\(note.date.formatted(date: .numeric, time: .shortened))")
                             .font(.caption)
                             .foregroundColor(.gray)
                     }

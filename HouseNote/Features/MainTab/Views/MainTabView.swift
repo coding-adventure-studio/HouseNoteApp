@@ -22,7 +22,7 @@ struct MainTabView: View {
             EditNoteView(
                 viewModel: newNoteViewModel,
                 onSaveSuccess: { property in
-                    notesViewModel.addNote(title: property.name, content: "\(property.id)", sections: property.sections)
+                    notesViewModel.addNote(title: property.name, sections: property.sections)
                     selectedTab = .list
                     newNoteViewModel.reset()
                 }

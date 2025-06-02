@@ -131,8 +131,8 @@ class EditNoteViewModel: ObservableObject, PropertyItemManageable {
     }
 
     func reset() {
-        self.property = dependency.fetchInitialTemplate()
-        viewData = EditNoteViewModel.makeViewData(from: self.property)
+        property = dependency.fetchInitialTemplate()
+        viewData = EditNoteViewModel.makeViewData(from: property)
     }
 
     // MARK: - PropertyItemManageable Implementation
