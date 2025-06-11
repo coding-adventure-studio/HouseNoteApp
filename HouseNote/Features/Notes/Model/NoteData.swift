@@ -1,13 +1,13 @@
 import Foundation
 
-struct Note: Identifiable {
+struct NoteData: Identifiable {
     let id: UUID = .init()
     var title: String
     var date: Date = .init()
     var sections: [PropertySection]
 }
 
-extension Note {
+extension NoteData {
     func toProperty() -> Property {
         Property(
             id: id,

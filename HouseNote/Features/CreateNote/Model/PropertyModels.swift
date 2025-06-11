@@ -4,7 +4,7 @@ import SwiftUICore
 
 enum NoteEditorMode {
     case create
-    case edit(Note)
+    case edit(NoteData)
 }
 
 // MARK: - Section & Field Template Definitions
