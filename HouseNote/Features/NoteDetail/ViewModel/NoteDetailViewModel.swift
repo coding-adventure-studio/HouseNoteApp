@@ -24,7 +24,7 @@ class PropertyService: PropertyServiceProtocol {
     }
 }
 
-struct EditNoteViewData: Identifiable {
+struct NoteDetailViewData: Identifiable {
     let id: UUID
     let name: String
     let advantageCount: Int
@@ -33,7 +33,7 @@ struct EditNoteViewData: Identifiable {
 }
 
 @MainActor
-class EditNoteViewModel: ObservableObject, PropertyItemManageable {
+class NoteDetailViewModel: ObservableObject, PropertyItemManageable {
     /// Input
     @Published var showStarredOnly: Bool = false
     @Published var saveSuccess: Bool = false
@@ -42,14 +42,14 @@ class EditNoteViewModel: ObservableObject, PropertyItemManageable {
     /// Output
     @Published var property: Property {
         didSet {
-            viewData = EditNoteViewModel.makeViewData(from: property)
+            viewData = NoteDetailViewModel.makeViewData(from: property)
         }
     }
 
-    @Published private(set) var viewData: EditNoteViewData
+    @Published private(set) var viewData: NoteDetailViewData
     @Published private(set) var filteredSections: [PropertySection] = []
 
-    private let dependency: EditNoteDependency
+    private let dependency: NoteDetailDependency
     private let service: PropertyServiceProtocol
     private var cancellables = Set<AnyCancellable>()
 
@@ -65,18 +65,18 @@ class EditNoteViewModel: ObservableObject, PropertyItemManageable {
     init(
         mode: NoteEditorMode,
         service: PropertyServiceProtocol = PropertyService(),
-        dependency: EditNoteDependency
+        dependency: NoteDetailDependency
     ) {
         self.service = service
         self.dependency = dependency
 
-        let property = EditNoteViewModel.makeProperty(mode: mode, dependency: dependency)
+        let property = NoteDetailViewModel.makeProperty(mode: mode, dependency: dependency)
         self.property = property
-        viewData = EditNoteViewModel.makeViewData(from: property)
+        viewData = NoteDetailViewModel.makeViewData(from: property)
         setupBindings()
     }
 
-    private static func makeProperty(mode: NoteEditorMode, dependency: EditNoteDependency) -> Property {
+    private static func makeProperty(mode: NoteEditorMode, dependency: NoteDetailDependency) -> Property {
         switch mode {
         case .create:
             dependency.fetchInitialTemplate()
@@ -132,7 +132,7 @@ class EditNoteViewModel: ObservableObject, PropertyItemManageable {
 
     func reset() {
         property = dependency.fetchInitialTemplate()
-        viewData = EditNoteViewModel.makeViewData(from: property)
+        viewData = NoteDetailViewModel.makeViewData(from: property)
     }
 
     // MARK: - PropertyItemManageable Implementation
@@ -187,14 +187,14 @@ class EditNoteViewModel: ObservableObject, PropertyItemManageable {
 
     // MARK: - Helper Methods
 
-    static func makeViewData(from property: Property) -> EditNoteViewData {
+    static func makeViewData(from property: Property) -> NoteDetailViewData {
         let items = property.sections.flatMap(\.items)
 
         let advantages = items.filter { $0.status == ItemStatus.advantage }.count
         let disadvantages = items.filter { $0.status == ItemStatus.disadvantage }.count
         let total = items.count
 
-        return EditNoteViewData(
+        return NoteDetailViewData(
             id: property.id,
             name: property.name,
             advantageCount: advantages,

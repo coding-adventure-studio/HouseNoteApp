@@ -8,8 +8,8 @@ enum MainTab: Hashable {
 struct MainTabView: View {
     @StateObject private var notesViewModel = NotesViewModel()
     @State private var selectedTab: MainTab = .list
-    @StateObject private var newNoteViewModel = EditNoteViewModel(mode: .create, dependency: EditNoteDependencyMock())
-    private let dependency = EditNoteDependencyMock()
+    @StateObject private var newNoteViewModel = NoteDetailViewModel(mode: .create, dependency: NoteDetailDependencyMock())
+    private let dependency = NoteDetailDependencyMock()
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -19,7 +19,7 @@ struct MainTabView: View {
                 }
                 .tag(MainTab.list)
 
-            EditNoteView(
+            NoteDetailView(
                 viewModel: newNoteViewModel,
                 onSaveSuccess: { property in
                     notesViewModel.addNote(title: property.name, sections: property.sections)

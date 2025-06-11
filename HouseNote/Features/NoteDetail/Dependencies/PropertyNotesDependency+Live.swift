@@ -6,13 +6,13 @@ enum EditNoteError: Error {
     case invalidData(reason: String)
 }
 
-protocol EditNoteDependency {
+protocol NoteDetailDependency {
     func fetchInitialTemplate() -> Property
     func saveLocally(_ property: Property) async throws
     func upload(_ property: Property) async throws
 }
 
-struct EditNoteDependencyMock: EditNoteDependency {
+struct NoteDetailDependencyMock: NoteDetailDependency {
     func fetchInitialTemplate() -> Property {
         let sections = allSectionTemplates.map { template in
             PropertySection(

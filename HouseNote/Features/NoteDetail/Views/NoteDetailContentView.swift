@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct EditNoteContentView: View {
-    @ObservedObject var viewModel: EditNoteViewModel
+struct NoteDetailContentView: View {
+    @ObservedObject var viewModel: NoteDetailViewModel
     @Binding var editingTitle: Bool
 
     var body: some View {
@@ -14,7 +14,7 @@ struct EditNoteContentView: View {
                     totalCount: viewModel.viewData.totalCount
                 )
                 PhotoSectionView(onAddPhoto: viewModel.addPhoto)
-                EditNoteSectionsView(viewModel: viewModel)
+                NoteDetailSectionsView(viewModel: viewModel)
             }
             .padding(.horizontal, 20)
             .background(Color(.systemGroupedBackground))
@@ -26,10 +26,10 @@ struct EditNoteContentView: View {
 }
 
 #Preview {
-    EditNoteContentView(
-        viewModel: EditNoteViewModel(
+    NoteDetailContentView(
+        viewModel: NoteDetailViewModel(
             mode: .create,
-            dependency: EditNoteDependencyMock()
+            dependency: NoteDetailDependencyMock()
         ),
         editingTitle: .constant(true)
     )

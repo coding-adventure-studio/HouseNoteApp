@@ -27,8 +27,8 @@ struct PropertyListView: View {
             )) {
                 if let property = selectedProperty,
                    let note = viewModel.notes.first(where: { $0.id == property.id }) {
-                    EditNoteView(
-                        viewModel: EditNoteViewModel(mode: .edit(note), dependency: EditNoteDependencyMock()),
+                    NoteDetailView(
+                        viewModel: NoteDetailViewModel(mode: .edit(note), dependency: NoteDetailDependencyMock()),
                         onSaveSuccess: { updatedProperty in
                             if let idx = viewModel.notes.firstIndex(where: { $0.id == updatedProperty.id }) {
                                 viewModel.notes[idx].sections = updatedProperty.sections

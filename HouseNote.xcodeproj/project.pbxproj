@@ -12,7 +12,7 @@
 		3A56B2EF2DDADF52008C2BE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A56B2ED2DDADF52008C2BE1 /* Localizable.strings */; };
 		3A56B2F22DDB1853008C2BE1 /* SectionTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56B2F12DDB1853008C2BE1 /* SectionTemplates.swift */; };
 		3A56B2F42DDC25CF008C2BE1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56B2F32DDC25CE008C2BE1 /* ImagePicker.swift */; };
-		3A5D0DD92DAFCD410036040E /* EditNoteContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D0DD82DAFCD3E0036040E /* EditNoteContentView.swift */; };
+		3A5D0DD92DAFCD410036040E /* NoteDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D0DD82DAFCD3E0036040E /* NoteDetailContentView.swift */; };
 		3A5D0DDB2DB094FC0036040E /* SectionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D0DDA2DB094F90036040E /* SectionCardView.swift */; };
 		3A6205202D5350CB00B0507E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A62050C2D5350CB00B0507E /* Preview Assets.xcassets */; };
 		3A6205212D5350CB00B0507E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A6205192D5350CB00B0507E /* Assets.xcassets */; };
@@ -21,12 +21,12 @@
 		3A6205242D5350CB00B0507E /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205102D5350CB00B0507E /* SaveButton.swift */; };
 		3A6205252D5350CB00B0507E /* EditableNavTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205122D5350CB00B0507E /* EditableNavTitleView.swift */; };
 		3A6205262D5350CB00B0507E /* HeaderControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205132D5350CB00B0507E /* HeaderControlsView.swift */; };
-		3A6205272D5350CB00B0507E /* EditNoteSectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205142D5350CB00B0507E /* EditNoteSectionsView.swift */; };
+		3A6205272D5350CB00B0507E /* NoteDetailSectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205142D5350CB00B0507E /* NoteDetailSectionsView.swift */; };
 		3A6205282D5350CB00B0507E /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205152D5350CB00B0507E /* ScoreView.swift */; };
-		3A6205292D5350CB00B0507E /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205172D5350CB00B0507E /* EditNoteView.swift */; };
+		3A6205292D5350CB00B0507E /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205172D5350CB00B0507E /* NoteDetailView.swift */; };
 		3A62052B2D5350CB00B0507E /* HouseNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62051B2D5350CB00B0507E /* HouseNoteApp.swift */; };
 		3A62052D2D5350CB00B0507E /* PropertyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62051D2D5350CB00B0507E /* PropertyModels.swift */; };
-		3A62052E2D5350CB00B0507E /* EditNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62051E2D5350CB00B0507E /* EditNoteViewModel.swift */; };
+		3A62052E2D5350CB00B0507E /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62051E2D5350CB00B0507E /* NoteDetailViewModel.swift */; };
 		3A62056A2D55996C00B0507E /* PhotoSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205692D55996900B0507E /* PhotoSectionView.swift */; };
 		3AA4BA082DB8CCCB00679E3B /* PropertyNotesDependency+Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4BA072DB8CCC300679E3B /* PropertyNotesDependency+Live.swift */; };
 		3AB06A192DD2EBF70067B739 /* TagSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB06A182DD2EBF50067B739 /* TagSelectorView.swift */; };
@@ -42,7 +42,7 @@
 		3A56B2EE2DDADF52008C2BE1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = Localizable.strings; sourceTree = "<group>"; };
 		3A56B2F12DDB1853008C2BE1 /* SectionTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTemplates.swift; sourceTree = "<group>"; };
 		3A56B2F32DDC25CE008C2BE1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		3A5D0DD82DAFCD3E0036040E /* EditNoteContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteContentView.swift; sourceTree = "<group>"; };
+		3A5D0DD82DAFCD3E0036040E /* NoteDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailContentView.swift; sourceTree = "<group>"; };
 		3A5D0DDA2DB094F90036040E /* SectionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCardView.swift; sourceTree = "<group>"; };
 		3A62050C2D5350CB00B0507E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3A62050E2D5350CB00B0507E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
@@ -50,13 +50,13 @@
 		3A6205102D5350CB00B0507E /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		3A6205122D5350CB00B0507E /* EditableNavTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNavTitleView.swift; sourceTree = "<group>"; };
 		3A6205132D5350CB00B0507E /* HeaderControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderControlsView.swift; sourceTree = "<group>"; };
-		3A6205142D5350CB00B0507E /* EditNoteSectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteSectionsView.swift; sourceTree = "<group>"; };
+		3A6205142D5350CB00B0507E /* NoteDetailSectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailSectionsView.swift; sourceTree = "<group>"; };
 		3A6205152D5350CB00B0507E /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
-		3A6205172D5350CB00B0507E /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
+		3A6205172D5350CB00B0507E /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
 		3A6205192D5350CB00B0507E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A62051B2D5350CB00B0507E /* HouseNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseNoteApp.swift; sourceTree = "<group>"; };
 		3A62051D2D5350CB00B0507E /* PropertyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyModels.swift; sourceTree = "<group>"; };
-		3A62051E2D5350CB00B0507E /* EditNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewModel.swift; sourceTree = "<group>"; };
+		3A62051E2D5350CB00B0507E /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewModel.swift; sourceTree = "<group>"; };
 		3A6205692D55996900B0507E /* PhotoSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSectionView.swift; sourceTree = "<group>"; };
 		3A90F5FC2DD5DFDB00519994 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		3A9EEAF82D51FA2A008A06F2 /* HouseNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,9 +131,9 @@
 			children = (
 				3A6205112D5350CB00B0507E /* NavigationViews */,
 				3A5D0DD72DAF95E80036040E /* HeaderView */,
-				3A6205172D5350CB00B0507E /* EditNoteView.swift */,
-				3A5D0DD82DAFCD3E0036040E /* EditNoteContentView.swift */,
-				3A6205142D5350CB00B0507E /* EditNoteSectionsView.swift */,
+				3A6205172D5350CB00B0507E /* NoteDetailView.swift */,
+				3A5D0DD82DAFCD3E0036040E /* NoteDetailContentView.swift */,
+				3A6205142D5350CB00B0507E /* NoteDetailSectionsView.swift */,
 				3A62056B2D55AE9400B0507E /* Component */,
 			);
 			path = Views;
@@ -218,12 +218,12 @@
 				3AF945A52DE3F28100FF8FA6 /* MainTab */,
 				3AF945B62DE4078800FF8FA6 /* Notes */,
 				3AF945AE2DE3F2D800FF8FA6 /* PropertyList */,
-				3AA4B9FE2DB8C83C00679E3B /* CreateNote */,
+				3AA4B9FE2DB8C83C00679E3B /* NoteDetail */,
 			);
 			path = Features;
 			sourceTree = "<group>";
 		};
-		3AA4B9FE2DB8C83C00679E3B /* CreateNote */ = {
+		3AA4B9FE2DB8C83C00679E3B /* NoteDetail */ = {
 			isa = PBXGroup;
 			children = (
 				3A6205182D5350CB00B0507E /* Views */,
@@ -231,13 +231,13 @@
 				3AA4BA032DB8C8E200679E3B /* Model */,
 				3AA4BA062DB8CCB000679E3B /* Dependencies */,
 			);
-			path = CreateNote;
+			path = NoteDetail;
 			sourceTree = "<group>";
 		};
 		3AA4B9FF2DB8C88100679E3B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3A62051E2D5350CB00B0507E /* EditNoteViewModel.swift */,
+				3A62051E2D5350CB00B0507E /* NoteDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -471,20 +471,20 @@
 				3A6205242D5350CB00B0507E /* SaveButton.swift in Sources */,
 				3A6205252D5350CB00B0507E /* EditableNavTitleView.swift in Sources */,
 				3A6205262D5350CB00B0507E /* HeaderControlsView.swift in Sources */,
-				3A6205272D5350CB00B0507E /* EditNoteSectionsView.swift in Sources */,
+				3A6205272D5350CB00B0507E /* NoteDetailSectionsView.swift in Sources */,
 				3A5D0DDB2DB094FC0036040E /* SectionCardView.swift in Sources */,
 				3AA4BA082DB8CCCB00679E3B /* PropertyNotesDependency+Live.swift in Sources */,
 				3AF945BA2DE407B500FF8FA6 /* NotesViewModel.swift in Sources */,
 				3A6205282D5350CB00B0507E /* ScoreView.swift in Sources */,
 				3A56B2F42DDC25CF008C2BE1 /* ImagePicker.swift in Sources */,
 				3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */,
-				3A6205292D5350CB00B0507E /* EditNoteView.swift in Sources */,
+				3A6205292D5350CB00B0507E /* NoteDetailView.swift in Sources */,
 				3A62052B2D5350CB00B0507E /* HouseNoteApp.swift in Sources */,
 				3AF945F32DED951A00FF8FA6 /* HouseNote.xcdatamodeld in Sources */,
 				3AB06A192DD2EBF70067B739 /* TagSelectorView.swift in Sources */,
 				3A62052D2D5350CB00B0507E /* PropertyModels.swift in Sources */,
-				3A62052E2D5350CB00B0507E /* EditNoteViewModel.swift in Sources */,
-				3A5D0DD92DAFCD410036040E /* EditNoteContentView.swift in Sources */,
+				3A62052E2D5350CB00B0507E /* NoteDetailViewModel.swift in Sources */,
+				3A5D0DD92DAFCD410036040E /* NoteDetailContentView.swift in Sources */,
 				3AC8498A2DB1E9A800F7DB55 /* FormPickerModels.swift in Sources */,
 				3AF945AF2DE3F2D800FF8FA6 /* PropertyListView.swift in Sources */,
 				3A62056A2D55996C00B0507E /* PhotoSectionView.swift in Sources */,

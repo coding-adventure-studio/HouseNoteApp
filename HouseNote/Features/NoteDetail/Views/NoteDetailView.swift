@@ -1,13 +1,13 @@
 import SwiftUI
 
 #Preview {
-    EditNoteView(
-        viewModel: EditNoteViewModel(mode: .create, dependency: EditNoteDependencyMock())
+    NoteDetailView(
+        viewModel: NoteDetailViewModel(mode: .create, dependency: NoteDetailDependencyMock())
     )
 }
 
-struct EditNoteView: View {
-    @ObservedObject var viewModel: EditNoteViewModel
+struct NoteDetailView: View {
+    @ObservedObject var viewModel: NoteDetailViewModel
     @State private var editingTitle = false
     var onSaveSuccess: ((Property) -> Void)? = nil
     @Environment(\.dismiss) private var dismiss
@@ -18,7 +18,7 @@ struct EditNoteView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                EditNoteContentView(viewModel: viewModel, editingTitle: $editingTitle)
+                NoteDetailContentView(viewModel: viewModel, editingTitle: $editingTitle)
                     .navigationBarItems(
                         leading: BackButton(action: viewModel.dismissView),
                         trailing: HStack {

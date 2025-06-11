@@ -1,16 +1,16 @@
 import SwiftUI
 
 #Preview {
-    EditNoteSectionsView(
-        viewModel: EditNoteViewModel(
+    NoteDetailSectionsView(
+        viewModel: NoteDetailViewModel(
             mode: .create,
-            dependency: EditNoteDependencyMock()
+            dependency: NoteDetailDependencyMock()
         )
     )
 }
 
-struct EditNoteSectionsView: View {
-    @ObservedObject var viewModel: EditNoteViewModel
+struct NoteDetailSectionsView: View {
+    @ObservedObject var viewModel: NoteDetailViewModel
     @State private var expandedSections: Set<UUID> = []
 
     var body: some View {
