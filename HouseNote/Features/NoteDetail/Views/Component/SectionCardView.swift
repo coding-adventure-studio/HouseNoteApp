@@ -79,24 +79,7 @@ struct PropertyItemRowView: View {
     private var itemValueEditor: some View {
         switch fieldTemplate.inputKind {
         case .textField:
-            if case let .text(value) = item.value {
-                HStack(spacing: 8) {
-                    TextField("請輸入\(fieldTemplate.label)", text: Binding(
-                        get: { value },
-                        set: { item.value = .text($0) }
-                    ))
-                    .font(.subheadline)
-                    .submitLabel(.done)
-                    .onSubmit {
-                        hideKeyboard()
-                    }
-                    if fieldTemplate.hasPhoto {
-                        trailingAccessoryView()
-                    }
-                }
-            } else {
-                Text("⚠️ 預期是 text，但實際是 \(item.value)")
-            }
+            TextFieldRenderer(item: $item, fieldTemplate: fieldTemplate)
 
         case .numberField:
             TextField("請輸入\(fieldTemplate.label)", value: PropertyItem.numberBinding(for: $item), formatter: NumberFormatter()).keyboardType(.numberPad)
