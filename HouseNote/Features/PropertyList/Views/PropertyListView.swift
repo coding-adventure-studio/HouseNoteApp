@@ -2,13 +2,13 @@ import SwiftUI
 
 struct PropertyListView: View {
     @ObservedObject var viewModel: NotesViewModel
-    @State private var selectedProperty: Property? = nil
+    @State private var selectedNote: NoteData? = nil
 
     var body: some View {
         NavigationStack {
             List(viewModel.notes) { note in
                 Button {
-                    selectedProperty = note.toProperty()
+                    selectedNote = note
                 } label: {
                     VStack(alignment: .leading) {
                         Text(note.title)
@@ -21,22 +21,16 @@ struct PropertyListView: View {
                 }
             }
             .navigationTitle("我的筆記")
-            .navigationDestination(isPresented: Binding(
-                get: { selectedProperty != nil },
-                set: { isActive in if !isActive { selectedProperty = nil } }
-            )) {
-                if let property = selectedProperty,
-                   let note = viewModel.notes.first(where: { $0.id == property.id }) {
-                    NoteDetailView(
-                        viewModel: NoteDetailViewModel(mode: .edit(note), dependency: NoteDetailDependencyMock()),
-                        onSaveSuccess: { updatedProperty in
-                            if let idx = viewModel.notes.firstIndex(where: { $0.id == updatedProperty.id }) {
-                                viewModel.notes[idx].sections = updatedProperty.sections
-                                viewModel.notes[idx].title = updatedProperty.name
-                            }
+            .sheet(item: $selectedNote) { note in
+                NoteDetailView(
+                    viewModel: NoteDetailViewModel(mode: .view(note), dependency: NoteDetailDependencyMock()),
+                    onSaveSuccess: { updatedProperty in
+                        if let idx = viewModel.notes.firstIndex(where: { $0.id == updatedProperty.id }) {
+                            viewModel.notes[idx].sections = updatedProperty.sections
+                            viewModel.notes[idx].title = updatedProperty.name
                         }
-                    )
-                }
+                    }
+                )
             }
         }
     }

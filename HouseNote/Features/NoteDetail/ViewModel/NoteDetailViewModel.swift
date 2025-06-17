@@ -48,6 +48,7 @@ class NoteDetailViewModel: ObservableObject, PropertyItemManageable {
 
     @Published private(set) var viewData: NoteDetailViewData
     @Published private(set) var filteredSections: [PropertySection] = []
+    @Published var mode: NoteMode
 
     private let dependency: NoteDetailDependency
     private let service: PropertyServiceProtocol
@@ -63,10 +64,11 @@ class NoteDetailViewModel: ObservableObject, PropertyItemManageable {
     // MARK: - Init
 
     init(
-        mode: NoteEditorMode,
+        mode: NoteMode,
         service: PropertyServiceProtocol = PropertyService(),
         dependency: NoteDetailDependency
     ) {
+        self.mode = mode
         self.service = service
         self.dependency = dependency
 
@@ -76,11 +78,11 @@ class NoteDetailViewModel: ObservableObject, PropertyItemManageable {
         setupBindings()
     }
 
-    private static func makeProperty(mode: NoteEditorMode, dependency: NoteDetailDependency) -> Property {
+    private static func makeProperty(mode: NoteMode, dependency: NoteDetailDependency) -> Property {
         switch mode {
         case .create:
             dependency.fetchInitialTemplate()
-        case let .edit(note):
+        case let .edit(note), let .view(note):
             note.toProperty()
         }
     }

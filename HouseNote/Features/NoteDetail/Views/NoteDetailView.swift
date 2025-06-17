@@ -14,6 +14,7 @@ struct NoteDetailView: View {
     @State private var showSuccessAlert = false
     @State private var showErrorAlert = false
     @State private var isSaving = false
+    @State private var showCreate = false
 
     var body: some View {
         NavigationView {
@@ -21,13 +22,7 @@ struct NoteDetailView: View {
                 NoteDetailContentView(viewModel: viewModel, editingTitle: $editingTitle)
                     .navigationBarItems(
                         leading: BackButton(action: viewModel.dismissView),
-                        trailing: HStack {
-                            LockButton(action: viewModel.lockProperty)
-                            SaveButton(action: {
-                                isSaving = true
-                                viewModel.saveProperty()
-                            })
-                        }
+                        trailing: trailingButton
                     )
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
@@ -46,6 +41,11 @@ struct NoteDetailView: View {
                         .background(RoundedRectangle(cornerRadius: 12).fill(Color(.systemBackground)))
                         .shadow(radius: 10)
                 }
+            }
+            .sheet(isPresented: $showCreate) {
+                NoteDetailView(
+                    viewModel: NoteDetailViewModel(mode: .create, dependency: NoteDetailDependencyMock())
+                )
             }
         }
         .onChange(of: viewModel.saveSuccess) { newValue in
@@ -70,6 +70,21 @@ struct NoteDetailView: View {
         .alert("儲存失敗，請稍後再試", isPresented: $showErrorAlert) {
             Button("確定") {
                 viewModel.saveError = false
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var trailingButton: some View {
+        switch viewModel.mode {
+        case .create, .edit:
+            Button("完成") {
+                isSaving = true
+                viewModel.saveProperty()
+            }
+        case let .view(noteData):
+            Button("編輯") {
+                viewModel.mode = .edit(noteData)
             }
         }
     }

@@ -8,7 +8,7 @@ enum MainTab: Hashable {
 struct MainTabView: View {
     @StateObject private var notesViewModel = NotesViewModel()
     @State private var selectedTab: MainTab = .list
-    @StateObject private var newNoteViewModel = NoteDetailViewModel(mode: .create, dependency: NoteDetailDependencyMock())
+    @State private var showCreateSheet = false
     private let dependency = NoteDetailDependencyMock()
 
     var body: some View {
@@ -19,23 +19,26 @@ struct MainTabView: View {
                 }
                 .tag(MainTab.list)
 
-            NoteDetailView(
-                viewModel: newNoteViewModel,
-                onSaveSuccess: { property in
-                    notesViewModel.addNote(title: property.name, sections: property.sections)
-                    selectedTab = .list
-                    newNoteViewModel.reset()
+            Color.clear
+                .tabItem {
+                    Label("新增筆記", systemImage: "plus.circle")
                 }
-            )
-            .tabItem {
-                Label("新增筆記", systemImage: "plus.circle")
-            }
-            .tag(MainTab.create)
+                .tag(MainTab.create)
         }
         .onChange(of: selectedTab) { tab in
             if tab == .create {
-                newNoteViewModel.reset()
+                showCreateSheet = true
+                selectedTab = .list
             }
+        }
+        .sheet(isPresented: $showCreateSheet) {
+            NoteDetailView(
+                viewModel: NoteDetailViewModel(mode: .create, dependency: dependency),
+                onSaveSuccess: { property in
+                    notesViewModel.addNote(title: property.name, sections: property.sections)
+                    showCreateSheet = false
+                }
+            )
         }
     }
 }

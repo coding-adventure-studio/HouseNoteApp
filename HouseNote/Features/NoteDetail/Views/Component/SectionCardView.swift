@@ -6,6 +6,7 @@ struct SectionCardView: View {
 
     var body: some View {
         let indexedItems = Array(zip(section.items.indices, $section.items))
+        let mode = viewModel.mode
 
         VStack(alignment: .leading, spacing: 16) {
             ForEach(indexedItems, id: \.0) { index, itemBinding in
@@ -16,7 +17,8 @@ struct SectionCardView: View {
                     item: itemBinding,
                     toggleStar: { viewModel.toggleStar(for: itemId) },
                     toggleStatus: { viewModel.toggleStatus(for: itemId) },
-                    fieldTemplate: fieldTemplate(for: itemType)
+                    fieldTemplate: fieldTemplate(for: itemType),
+                    mode: mode
                 )
                 if index < section.items.count - 1 {
                     Divider().padding(.leading, 30)
@@ -35,6 +37,7 @@ struct PropertyItemRowView: View {
     let toggleStar: () -> Void
     let toggleStatus: () -> Void
     let fieldTemplate: FieldTemplate
+    let mode: NoteMode
 
     @State private var pickerState: PickerState?
     @State private var showImagePicker = false
