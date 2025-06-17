@@ -28,6 +28,9 @@
 		3A62052D2D5350CB00B0507E /* PropertyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62051D2D5350CB00B0507E /* PropertyModels.swift */; };
 		3A62052E2D5350CB00B0507E /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62051E2D5350CB00B0507E /* NoteDetailViewModel.swift */; };
 		3A62056A2D55996C00B0507E /* PhotoSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6205692D55996900B0507E /* PhotoSectionView.swift */; };
+		3A6F6CF32E00FB7D0006F945 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6CF12E00FB7D0006F945 /* MainTabView.swift */; };
+		3A6F6CF82E00FB7D0006F945 /* Binding+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6CF62E00FB7D0006F945 /* Binding+extension.swift */; };
+		3A6F6CF92E00FB7D0006F945 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6CF72E00FB7D0006F945 /* UIView+extension.swift */; };
 		3A6F6CFB2E01403D0006F945 /* TextFieldRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6CFA2E01403C0006F945 /* TextFieldRenderer.swift */; };
 		3A6F6CFD2E01410F0006F945 /* RowValueRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6CFC2E01410E0006F945 /* RowValueRenderer.swift */; };
 		3A6F6CFF2E01416D0006F945 /* MultiPickerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6CFE2E01416B0006F945 /* MultiPickerRenderer.swift */; };
@@ -65,6 +68,9 @@
 		3A62051D2D5350CB00B0507E /* PropertyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyModels.swift; sourceTree = "<group>"; };
 		3A62051E2D5350CB00B0507E /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewModel.swift; sourceTree = "<group>"; };
 		3A6205692D55996900B0507E /* PhotoSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSectionView.swift; sourceTree = "<group>"; };
+		3A6F6CF12E00FB7D0006F945 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		3A6F6CF62E00FB7D0006F945 /* Binding+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+extension.swift"; sourceTree = "<group>"; };
+		3A6F6CF72E00FB7D0006F945 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		3A6F6CFA2E01403C0006F945 /* TextFieldRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldRenderer.swift; sourceTree = "<group>"; };
 		3A6F6CFC2E01410E0006F945 /* RowValueRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowValueRenderer.swift; sourceTree = "<group>"; };
 		3A6F6CFE2E01416B0006F945 /* MultiPickerRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerRenderer.swift; sourceTree = "<group>"; };
@@ -84,16 +90,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		3AB069882DC4B4EC0067B739 /* Extensions */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		3AF945A52DE3F28100FF8FA6 /* MainTab */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MainTab;
-			sourceTree = "<group>";
-		};
 		3AF945B72DE4079200FF8FA6 /* Model */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Model;
@@ -183,6 +179,31 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		3A6F6D082E01538D0006F945 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3A6F6CF62E00FB7D0006F945 /* Binding+extension.swift */,
+				3A6F6CF72E00FB7D0006F945 /* UIView+extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3A6F6D092E0153AD0006F945 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				3A6F6D0A2E0153B20006F945 /* Views */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		3A6F6D0A2E0153B20006F945 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A6F6CF12E00FB7D0006F945 /* MainTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3A90F5F42DD5DCE100519994 /* AppLocalization */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,7 +257,7 @@
 		3AA4B9FD2DB8C83200679E3B /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				3AF945A52DE3F28100FF8FA6 /* MainTab */,
+				3A6F6D092E0153AD0006F945 /* MainTab */,
 				3AF945B62DE4078800FF8FA6 /* Notes */,
 				3AF945AE2DE3F2D800FF8FA6 /* PropertyList */,
 				3AA4B9FE2DB8C83C00679E3B /* NoteDetail */,
@@ -301,7 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				3A90F5F42DD5DCE100519994 /* AppLocalization */,
-				3AB069882DC4B4EC0067B739 /* Extensions */,
+				3A6F6D082E01538D0006F945 /* Extensions */,
 				3AA4BA042DB8C93300679E3B /* UI */,
 				3AA4BA052DB8C93800679E3B /* Models */,
 			);
@@ -375,8 +396,6 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				3AB069882DC4B4EC0067B739 /* Extensions */,
-				3AF945A52DE3F28100FF8FA6 /* MainTab */,
 				3AF945B72DE4079200FF8FA6 /* Model */,
 			);
 			name = HouseNote;
@@ -508,9 +527,12 @@
 				3A6F6D012E0143960006F945 /* TagSelectorRenderer.swift in Sources */,
 				3A6F6CFD2E01410F0006F945 /* RowValueRenderer.swift in Sources */,
 				3A62052B2D5350CB00B0507E /* HouseNoteApp.swift in Sources */,
+				3A6F6CF82E00FB7D0006F945 /* Binding+extension.swift in Sources */,
+				3A6F6CF92E00FB7D0006F945 /* UIView+extension.swift in Sources */,
 				3AF945F32DED951A00FF8FA6 /* HouseNote.xcdatamodeld in Sources */,
 				3AB06A192DD2EBF70067B739 /* TagSelectorView.swift in Sources */,
 				3A62052D2D5350CB00B0507E /* PropertyModels.swift in Sources */,
+				3A6F6CF32E00FB7D0006F945 /* MainTabView.swift in Sources */,
 				3A62052E2D5350CB00B0507E /* NoteDetailViewModel.swift in Sources */,
 				3A5D0DD92DAFCD410036040E /* NoteDetailContentView.swift in Sources */,
 				3AC8498A2DB1E9A800F7DB55 /* FormPickerModels.swift in Sources */,
