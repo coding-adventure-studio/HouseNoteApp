@@ -15,6 +15,36 @@ struct PickerState: Identifiable {
     let onConfirm: ([NumberField: Int]) -> Void
 }
 
+extension PickerState {
+    static func fromFields(
+        _ fields: [NumberField],
+        title: String,
+        initialValues: [String: Int],
+        onConfirm: @escaping ([String: Int]) -> Void
+    ) -> PickerState {
+        let values: [NumberField: Int] = Dictionary(uniqueKeysWithValues: fields.map {
+            ($0, initialValues[$0.label] ?? 0)
+        })
+
+        return PickerState(
+            title: title,
+            fields: fields,
+            initialValues: values,
+            onConfirm: { raw in
+                onConfirm(raw.mapKeys(\.label))
+            }
+        )
+    }
+}
+
+// MARK: - Helper Extensions
+
+extension Dictionary {
+    func mapKeys<T>(_ transform: (Key) -> T) -> [T: Value] where T: Hashable {
+        [T: Value](uniqueKeysWithValues: map { (transform($0.key), $0.value) })
+    }
+}
+
 enum ItemFieldType: String, CaseIterable, Identifiable {
     case floorCurrent
     case floorTotal
