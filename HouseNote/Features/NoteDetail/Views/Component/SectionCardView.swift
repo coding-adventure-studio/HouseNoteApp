@@ -82,12 +82,7 @@ struct PropertyItemRowView: View {
             TextFieldRenderer(item: $item, fieldTemplate: fieldTemplate)
 
         case .numberField:
-            TextField("請輸入\(fieldTemplate.label)", value: PropertyItem.numberBinding(for: $item), formatter: NumberFormatter()).keyboardType(.numberPad)
-                .font(.subheadline)
-                .submitLabel(.done)
-                .onSubmit {
-                    hideKeyboard()
-                }
+            NumberFieldRenderer(item: $item, fieldTemplate: fieldTemplate)
 
         case .multiPicker:
             MultiPickerRenderer(item: $item, fieldTemplate: fieldTemplate)
