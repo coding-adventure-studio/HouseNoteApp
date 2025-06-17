@@ -89,26 +89,11 @@ struct PropertyItemRowView: View {
                     hideKeyboard()
                 }
 
-        case let .multiPicker(title, fields):
+        case .multiPicker:
             MultiPickerRenderer(item: $item, fieldTemplate: fieldTemplate)
 
-        case let .tagSelector(category):
-            TagSelectorView(
-                options: category.options,
-                selectedTags: Binding(
-                    get: {
-                        if case let .tagSelector(selection) = item.value {
-                            return selection.selectedTags
-                        }
-                        return []
-                    },
-                    set: { newTags in
-                        if case let .tagSelector(selection) = item.value {
-                            item.value = .tagSelector(TagSelection(category: selection.category, selectedTags: newTags))
-                        }
-                    }
-                )
-            )
+        case .tagSelector:
+            TagSelectorRenderer(item: $item, fieldTemplate: fieldTemplate)
 
         case let .slider(min, max, step):
             HStack {

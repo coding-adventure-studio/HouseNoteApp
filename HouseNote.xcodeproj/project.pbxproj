@@ -31,6 +31,7 @@
 		3A6F6CFB2E01403D0006F945 /* TextFieldRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6CFA2E01403C0006F945 /* TextFieldRenderer.swift */; };
 		3A6F6CFD2E01410F0006F945 /* RowValueRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6CFC2E01410E0006F945 /* RowValueRenderer.swift */; };
 		3A6F6CFF2E01416D0006F945 /* MultiPickerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6CFE2E01416B0006F945 /* MultiPickerRenderer.swift */; };
+		3A6F6D012E0143960006F945 /* TagSelectorRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6D002E0143940006F945 /* TagSelectorRenderer.swift */; };
 		3AA4BA082DB8CCCB00679E3B /* PropertyNotesDependency+Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4BA072DB8CCC300679E3B /* PropertyNotesDependency+Live.swift */; };
 		3AB06A192DD2EBF70067B739 /* TagSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB06A182DD2EBF50067B739 /* TagSelectorView.swift */; };
 		3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC849862DB1643300F7DB55 /* MultiFieldNumberPickerView.swift */; };
@@ -64,6 +65,7 @@
 		3A6F6CFA2E01403C0006F945 /* TextFieldRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldRenderer.swift; sourceTree = "<group>"; };
 		3A6F6CFC2E01410E0006F945 /* RowValueRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowValueRenderer.swift; sourceTree = "<group>"; };
 		3A6F6CFE2E01416B0006F945 /* MultiPickerRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerRenderer.swift; sourceTree = "<group>"; };
+		3A6F6D002E0143940006F945 /* TagSelectorRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorRenderer.swift; sourceTree = "<group>"; };
 		3A90F5FC2DD5DFDB00519994 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		3A9EEAF82D51FA2A008A06F2 /* HouseNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA4BA072DB8CCC300679E3B /* PropertyNotesDependency+Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PropertyNotesDependency+Live.swift"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				3A6F6CFC2E01410E0006F945 /* RowValueRenderer.swift */,
 				3A6F6CFA2E01403C0006F945 /* TextFieldRenderer.swift */,
 				3A6F6CFE2E01416B0006F945 /* MultiPickerRenderer.swift */,
+				3A6F6D002E0143940006F945 /* TagSelectorRenderer.swift */,
 				3A56B2F32DDC25CE008C2BE1 /* ImagePicker.swift */,
 				3AB06A182DD2EBF50067B739 /* TagSelectorView.swift */,
 			);
@@ -490,6 +493,7 @@
 				3A56B2F42DDC25CF008C2BE1 /* ImagePicker.swift in Sources */,
 				3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */,
 				3A6205292D5350CB00B0507E /* NoteDetailView.swift in Sources */,
+				3A6F6D012E0143960006F945 /* TagSelectorRenderer.swift in Sources */,
 				3A6F6CFD2E01410F0006F945 /* RowValueRenderer.swift in Sources */,
 				3A62052B2D5350CB00B0507E /* HouseNoteApp.swift in Sources */,
 				3AF945F32DED951A00FF8FA6 /* HouseNote.xcdatamodeld in Sources */,
