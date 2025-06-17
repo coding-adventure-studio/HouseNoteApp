@@ -95,28 +95,8 @@ struct PropertyItemRowView: View {
         case .tagSelector:
             TagSelectorRenderer(item: $item, fieldTemplate: fieldTemplate)
 
-        case let .slider(min, max, step):
-            HStack {
-                Slider(
-                    value: Binding(
-                        get: {
-                            if case let .slider(val) = item.value { return val }
-                            return min
-                        },
-                        set: { newValue in
-                            item.value = .slider(newValue)
-                        }
-                    ),
-                    in: min ... max,
-                    step: step
-                )
-                .frame(maxWidth: 150)
-                Text("\(item.value.sliderValueString)")
-                    .frame(width: 40, alignment: .leading)
-                if fieldTemplate.hasPhoto {
-                    trailingAccessoryView()
-                }
-            }
+        case .slider:
+            SliderRenderer(item: $item, fieldTemplate: fieldTemplate)
 
         case .toggle:
             Toggle("", isOn: Binding(
