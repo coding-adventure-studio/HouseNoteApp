@@ -3,38 +3,44 @@ import SwiftUI
 struct SliderRenderer: RowValueRenderer {
     @Binding var item: PropertyItem
     let fieldTemplate: FieldTemplate
+    let isEditable: Bool
 
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
 
-    init(item: Binding<PropertyItem>, fieldTemplate: FieldTemplate) {
+    init(item: Binding<PropertyItem>, fieldTemplate: FieldTemplate, isEditable: Bool) {
         _item = item
         self.fieldTemplate = fieldTemplate
+        self.isEditable = isEditable
     }
 
     var body: some View {
         if case let .slider(min, max, step) = fieldTemplate.inputKind {
             HStack {
-                Slider(
-                    value: Binding(
-                        get: {
-                            if case let .slider(val) = item.value { return val }
-                            return min
-                        },
-                        set: { newValue in
-                            item.value = .slider(newValue)
-                        }
-                    ),
-                    in: min ... max,
-                    step: step
-                )
-                .frame(maxWidth: 150)
-
-                Text("\(item.value.sliderValueString)")
-                    .frame(width: 40, alignment: .leading)
+                if isEditable {
+                    Slider(
+                        value: Binding(
+                            get: {
+                                if case let .slider(val) = item.value { return val }
+                                return min
+                            },
+                            set: { newValue in
+                                item.value = .slider(newValue)
+                            }
+                        ),
+                        in: min ... max,
+                        step: step
+                    )
+                    .frame(maxWidth: 150)
+                } else {
+                    Text(item.value.sliderValueString)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                }
 
                 if fieldTemplate.hasPhoto {
                     trailingAccessoryView()
+                        .disabled(!isEditable)
                 }
             }
         } else {

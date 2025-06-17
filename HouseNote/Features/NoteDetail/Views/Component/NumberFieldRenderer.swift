@@ -3,10 +3,12 @@ import SwiftUI
 struct NumberFieldRenderer: RowValueRenderer {
     @Binding var item: PropertyItem
     let fieldTemplate: FieldTemplate
+    let isEditable: Bool
 
-    init(item: Binding<PropertyItem>, fieldTemplate: FieldTemplate) {
+    init(item: Binding<PropertyItem>, fieldTemplate: FieldTemplate, isEditable: Bool) {
         _item = item
         self.fieldTemplate = fieldTemplate
+        self.isEditable = isEditable
     }
 
     var body: some View {

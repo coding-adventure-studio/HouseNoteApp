@@ -77,6 +77,14 @@ struct PropertyItemRowView: View {
 
     @ViewBuilder
     private var itemValueEditor: some View {
-        RendererFactory.make(inputKind: fieldTemplate.inputKind, item: $item, fieldTemplate: fieldTemplate)
+        RendererFactory.make(
+            inputKind: fieldTemplate.inputKind,
+            item: $item,
+            fieldTemplate: fieldTemplate,
+            isEditable: {
+                if case .view = mode { return false }
+                return true
+            }()
+        )
     }
 }
