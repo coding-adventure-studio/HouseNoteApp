@@ -99,16 +99,7 @@ struct PropertyItemRowView: View {
             SliderRenderer(item: $item, fieldTemplate: fieldTemplate)
 
         case .toggle:
-            Toggle("", isOn: Binding(
-                get: {
-                    if case let .number(val) = item.value { return val == 1 }
-                    return false
-                },
-                set: { newValue in
-                    item.value = .number(newValue ? 1 : 0)
-                }
-            ))
-            .labelsHidden()
+            ToggleRenderer(item: $item, fieldTemplate: fieldTemplate)
         }
     }
 

@@ -33,6 +33,7 @@
 		3A6F6CFF2E01416D0006F945 /* MultiPickerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6CFE2E01416B0006F945 /* MultiPickerRenderer.swift */; };
 		3A6F6D012E0143960006F945 /* TagSelectorRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6D002E0143940006F945 /* TagSelectorRenderer.swift */; };
 		3A6F6D032E0146320006F945 /* SliderRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6D022E0146230006F945 /* SliderRenderer.swift */; };
+		3A6F6D052E0147530006F945 /* ToggleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6F6D042E0147520006F945 /* ToggleRenderer.swift */; };
 		3AA4BA082DB8CCCB00679E3B /* PropertyNotesDependency+Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4BA072DB8CCC300679E3B /* PropertyNotesDependency+Live.swift */; };
 		3AB06A192DD2EBF70067B739 /* TagSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB06A182DD2EBF50067B739 /* TagSelectorView.swift */; };
 		3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC849862DB1643300F7DB55 /* MultiFieldNumberPickerView.swift */; };
@@ -68,6 +69,7 @@
 		3A6F6CFE2E01416B0006F945 /* MultiPickerRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerRenderer.swift; sourceTree = "<group>"; };
 		3A6F6D002E0143940006F945 /* TagSelectorRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorRenderer.swift; sourceTree = "<group>"; };
 		3A6F6D022E0146230006F945 /* SliderRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderRenderer.swift; sourceTree = "<group>"; };
+		3A6F6D042E0147520006F945 /* ToggleRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleRenderer.swift; sourceTree = "<group>"; };
 		3A90F5FC2DD5DFDB00519994 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		3A9EEAF82D51FA2A008A06F2 /* HouseNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA4BA072DB8CCC300679E3B /* PropertyNotesDependency+Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PropertyNotesDependency+Live.swift"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				3A6F6CFE2E01416B0006F945 /* MultiPickerRenderer.swift */,
 				3A6F6D002E0143940006F945 /* TagSelectorRenderer.swift */,
 				3A6F6D022E0146230006F945 /* SliderRenderer.swift */,
+				3A6F6D042E0147520006F945 /* ToggleRenderer.swift */,
 				3A56B2F32DDC25CE008C2BE1 /* ImagePicker.swift */,
 				3AB06A182DD2EBF50067B739 /* TagSelectorView.swift */,
 			);
@@ -493,6 +496,7 @@
 				3A5D0DDB2DB094FC0036040E /* SectionCardView.swift in Sources */,
 				3AA4BA082DB8CCCB00679E3B /* PropertyNotesDependency+Live.swift in Sources */,
 				3AF945BA2DE407B500FF8FA6 /* NotesViewModel.swift in Sources */,
+				3A6F6D052E0147530006F945 /* ToggleRenderer.swift in Sources */,
 				3A6205282D5350CB00B0507E /* ScoreView.swift in Sources */,
 				3A56B2F42DDC25CF008C2BE1 /* ImagePicker.swift in Sources */,
 				3AC849872DB1643700F7DB55 /* MultiFieldNumberPickerView.swift in Sources */,
