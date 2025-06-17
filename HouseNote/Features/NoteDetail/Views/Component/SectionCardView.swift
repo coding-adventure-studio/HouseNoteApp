@@ -90,26 +90,7 @@ struct PropertyItemRowView: View {
                 }
 
         case let .multiPicker(title, fields):
-            Button {
-                let numberFields = fields.map { fieldTemplate.numberField(for: $0) }
-                let initialValues: [String: Int] = if case let .multi(values) = item.value {
-                    values
-                } else {
-                    [:]
-                }
-
-                pickerState = PickerState.fromFields(
-                    numberFields,
-                    title: title,
-                    initialValues: initialValues
-                ) { result in
-                    item.value = .multi(result)
-                }
-
-            } label: {
-                Text(fieldTemplate.displayText(item.value))
-                    .foregroundColor(.blue)
-            }
+            MultiPickerRenderer(item: $item, fieldTemplate: fieldTemplate)
 
         case let .tagSelector(category):
             TagSelectorView(
