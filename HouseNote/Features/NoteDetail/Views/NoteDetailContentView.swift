@@ -17,7 +17,7 @@ struct NoteDetailContentView: View {
                 NoteDetailSectionsView(viewModel: viewModel)
             }
             .padding(.horizontal, 20)
-            .background(Color(.systemGroupedBackground))
+            .background(Color.themeBackground)
             .onTapGesture {
                 hideKeyboard()
             }

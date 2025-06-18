@@ -35,7 +35,7 @@ struct MultiPickerRenderer: RowValueRenderer {
                 }
             } label: {
                 Text(fieldTemplate.displayText(item.value))
-                    .foregroundColor(.blue)
+                    .foregroundColor(.gray)
             }
             .sheet(item: $pickerState) { picker in
                 MultiFieldNumberPickerView(
