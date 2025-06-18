@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0527912E02B40B0039EEC8 /* PriceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0527902E02B4020039EEC8 /* PriceDetailView.swift */; };
+		3A0527932E02B4140039EEC8 /* PriceDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0527922E02B40F0039EEC8 /* PriceDetailCardView.swift */; };
+		3A0527972E02B4300039EEC8 /* PriceEstimatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0527962E02B42C0039EEC8 /* PriceEstimatorView.swift */; };
+		3A05279A2E02B5430039EEC8 /* ListingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0527992E02B5410039EEC8 /* ListingItem.swift */; };
+		3A05279C2E02BBEA0039EEC8 /* PriceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A05279B2E02BBE70039EEC8 /* PriceDetailViewModel.swift */; };
+		3A05279E2E02C8F70039EEC8 /* PriceDetailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A05279D2E02C8F40039EEC8 /* PriceDetailAPI.swift */; };
 		3A56B2C92DD5E72B008C2BE1 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90F5FC2DD5DFDB00519994 /* Localization.swift */; };
 		3A56B2EB2DDADBAC008C2BE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A56B2E92DDADBAC008C2BE1 /* Localizable.strings */; };
 		3A56B2EF2DDADF52008C2BE1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A56B2ED2DDADF52008C2BE1 /* Localizable.strings */; };
@@ -49,6 +55,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A0527902E02B4020039EEC8 /* PriceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailView.swift; sourceTree = "<group>"; };
+		3A0527922E02B40F0039EEC8 /* PriceDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailCardView.swift; sourceTree = "<group>"; };
+		3A0527962E02B42C0039EEC8 /* PriceEstimatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceEstimatorView.swift; sourceTree = "<group>"; };
+		3A0527992E02B5410039EEC8 /* ListingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingItem.swift; sourceTree = "<group>"; };
+		3A05279B2E02BBE70039EEC8 /* PriceDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailViewModel.swift; sourceTree = "<group>"; };
+		3A05279D2E02C8F40039EEC8 /* PriceDetailAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDetailAPI.swift; sourceTree = "<group>"; };
 		3A56B2EA2DDADBAC008C2BE1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		3A56B2EE2DDADF52008C2BE1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = Localizable.strings; sourceTree = "<group>"; };
 		3A56B2F12DDB1853008C2BE1 /* SectionTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTemplates.swift; sourceTree = "<group>"; };
@@ -110,6 +122,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A05278F2E02B3EC0039EEC8 /* PriceDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3A05279D2E02C8F40039EEC8 /* PriceDetailAPI.swift */,
+				3A0527982E02B5320039EEC8 /* Model */,
+				3A0527962E02B42C0039EEC8 /* PriceEstimatorView.swift */,
+				3A0527902E02B4020039EEC8 /* PriceDetailView.swift */,
+				3A05279B2E02BBE70039EEC8 /* PriceDetailViewModel.swift */,
+				3A0527922E02B40F0039EEC8 /* PriceDetailCardView.swift */,
+			);
+			path = PriceDetail;
+			sourceTree = "<group>";
+		};
+		3A0527982E02B5320039EEC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3A0527992E02B5410039EEC8 /* ListingItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3A5D0DD72DAF95E80036040E /* HeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +297,7 @@
 				3AF945B62DE4078800FF8FA6 /* Notes */,
 				3AF945AE2DE3F2D800FF8FA6 /* PropertyList */,
 				3AA4B9FE2DB8C83C00679E3B /* NoteDetail */,
+				3A05278F2E02B3EC0039EEC8 /* PriceDetail */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -511,11 +545,14 @@
 				3A6205222D5350CB00B0507E /* BackButton.swift in Sources */,
 				3A56B2F22DDB1853008C2BE1 /* SectionTemplates.swift in Sources */,
 				3A6205232D5350CB00B0507E /* LockButton.swift in Sources */,
+				3A0527972E02B4300039EEC8 /* PriceEstimatorView.swift in Sources */,
 				3A56B2C92DD5E72B008C2BE1 /* Localization.swift in Sources */,
 				3A6205242D5350CB00B0507E /* SaveButton.swift in Sources */,
 				3A6F6CFB2E01403D0006F945 /* TextFieldRenderer.swift in Sources */,
 				3A6F6CFF2E01416D0006F945 /* MultiPickerRenderer.swift in Sources */,
 				3A6205252D5350CB00B0507E /* EditableNavTitleView.swift in Sources */,
+				3A0527932E02B4140039EEC8 /* PriceDetailCardView.swift in Sources */,
+				3A05279C2E02BBEA0039EEC8 /* PriceDetailViewModel.swift in Sources */,
 				3A6205262D5350CB00B0507E /* HeaderControlsView.swift in Sources */,
 				3A6205272D5350CB00B0507E /* NoteDetailSectionsView.swift in Sources */,
 				3A5D0DDB2DB094FC0036040E /* SectionCardView.swift in Sources */,
@@ -538,8 +575,11 @@
 				3A62052D2D5350CB00B0507E /* PropertyModels.swift in Sources */,
 				3A6F6CF32E00FB7D0006F945 /* MainTabView.swift in Sources */,
 				3A62052E2D5350CB00B0507E /* NoteDetailViewModel.swift in Sources */,
+				3A0527912E02B40B0039EEC8 /* PriceDetailView.swift in Sources */,
 				3A5D0DD92DAFCD410036040E /* NoteDetailContentView.swift in Sources */,
 				3AC8498A2DB1E9A800F7DB55 /* FormPickerModels.swift in Sources */,
+				3A05279A2E02B5430039EEC8 /* ListingItem.swift in Sources */,
+				3A05279E2E02C8F70039EEC8 /* PriceDetailAPI.swift in Sources */,
 				3AF945AF2DE3F2D800FF8FA6 /* PropertyListView.swift in Sources */,
 				3A62056A2D55996C00B0507E /* PhotoSectionView.swift in Sources */,
 			);
